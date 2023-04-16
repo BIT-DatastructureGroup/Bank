@@ -1,3 +1,5 @@
+#ifndef ACCOUNTMANAGER_H
+#define ACCOUNTMANAGER_H
 #include <vector>
 #include "Account.h"
 #include "AccountList.h"
@@ -44,3 +46,4 @@ public:
   std::vector<Account> getAccounts();
 
 };
+#endif

@@ -1,1 +1,3 @@
 C:\Users\14269\Desktop\code\Bank\Bank\x64\Debug\Bank.exe
+D:\code for group\Bank\Bank\x64\Debug\Bank.exe
+C:\Users\14269\Desktop\Bank\Bank\x64\Debug\Bank.exe
