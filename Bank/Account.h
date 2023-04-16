@@ -6,6 +6,7 @@ class Account {
 private:
 
 public:
+	Account() { ID = "0"; name = "0"; phone = "0"; email = "0"; IDCard = "0"; Card = "0"; balance = 0; }
 	Account(std::string id, std::string na, std::string ph, std::string em, std::string IDC, std::string Ca, float ba) {
 		ID = id; name = na; phone = ph; email = em; IDCard = IDC; Card = Ca; balance = ba;
 	}

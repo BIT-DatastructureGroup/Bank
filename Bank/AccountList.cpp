@@ -2,6 +2,11 @@
 
 void AccountList::add(Account account)
 {
-	// TODO: 加上新的账户
+	AccountNode* p = new AccountNode;
+	p = head;
+	for (; p->next != NULL; p = p->next);
+	AccountNode* temp = new AccountNode;
+	temp->data = account;
+	p->next = temp;
 
 }
