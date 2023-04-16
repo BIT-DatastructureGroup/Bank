@@ -18,5 +18,16 @@
     <ClCompile Include="Bank.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="AccountManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Account.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
