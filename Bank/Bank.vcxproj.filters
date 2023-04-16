@@ -21,12 +21,24 @@
     <ClCompile Include="AccountManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="AccountNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AccountList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="AccountManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountNode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AccountList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

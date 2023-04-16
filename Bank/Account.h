@@ -4,6 +4,9 @@ class Account {
 private:
 
 public:
+	Account(std::string id, std::string na, std::string ph, std::string em, std::string IDC, std::string Ca, float ba) {
+		ID = id; name = na; phone = ph; email = em; IDCard = IDC; Card = Ca; balance = ba;
+	}
   // 身份标识号
   std::string ID;
 

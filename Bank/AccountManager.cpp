@@ -1,4 +1,9 @@
 #include "AccountManager.h"
+#include <random>
+#include <string>
+#include<ctime>
+
+
 
 bool AccountManager::ImportFile()
 {
@@ -13,7 +18,13 @@ bool AccountManager::ExportFile()
 
 bool AccountManager::CreateAccount(std::string ID, std::string name, std::string phone, std::string email, std::string IDCard)
 {
-  return false;
+	// 生成6位随机数
+	srand(time(NULL));
+	int randomNumber = rand() % 900000 + 100000;
+	std::string Card = std::to_string(randomNumber);
+	Account newAccount(ID, name, phone, email, IDCard, Card, 0);
+	accountList.add(newAccount);
+  return true;
 }
 
 std::vector<Account> AccountManager::QueryBlur()

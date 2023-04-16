@@ -1,14 +1,15 @@
 #include <vector>
 #include "Account.h"
+#include "AccountList.h"
 
 // 账户管理类
 class AccountManager {
 private:
-  std::vector<Account> accountList;
+ AccountList accountList;
 public:
   AccountManager() {
     // TODO: 读取文件进入列表里
-
+      
   }
 
   // 导入文件
