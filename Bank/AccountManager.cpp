@@ -2,15 +2,51 @@
 #include <random>
 #include <string>
 #include<ctime>
+#include <fstream>
+#include<iostream>
 
 // 实例化模板类
 template class AccountList<Account>; 
 
+// 从文件中导入数据
 bool AccountManager::ImportFile()
 {
+	std::fstream* dat;
+	std::fstream DATA("account.dat", std::ios::in | std::ios::out | std::ios::binary);
+	dat = &DATA;
+	if (!DATA)
+	{
+		std::cout << "未找到数据文件，正在重新创建..." << std::endl;
+	}
+	fopen("account.dat", "wb");
+	dat = new std::fstream("account.dat", std::ios::in | std::ios::out | std::ios::binary);
+	int cnt = 0;
+	dat->seekp(0);//设置文件里的起点
+	dat->write(reinterpret_cast<char*>(&cnt), sizeof(int));//把cnt写入文件
+	std::cout << "数据库已创建！\n";
+	dat->seekp(0);
+	dat->read(reinterpret_cast<char*> (&cnt), sizeof(int));//读取账本中的cnt
+	if (cnt == 0)
+	{
+		std::cout << "当前数据库为空！请开始您的操作！\n";
+	}
+	else
+	{
+		std::cout << "当前已有 " << cnt << "项账目，正在载入中...\n";
+		for (int i = 0; i < cnt; i++)
+		{
+			Account I;
+			dat->seekp(sizeof(int) + i * sizeof(Account));
+			dat->read(reinterpret_cast<char*>(&I), sizeof(Account));//把文件中Item赋值给I
+			accountList.add(I);//把I存到链表里
+			//I.print();
+		}
+		std::cout << "载入完成！\n";
+	}
 	return false;
 }
 
+//保存数据
 bool AccountManager::ExportFile()
 {
 

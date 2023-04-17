@@ -20,6 +20,9 @@ public:
 	bool deposite(std::string ID, float money);
 	bool withdraw(std::string ID, float money);
 	bool deleteaccount(std::string ID);
+
+	// TODO: 返回链表中的元素个数
+	int length();
 };
 template <typename T> //模板声明
 void AccountList<T>::add(T account) //使用类型参数T
@@ -161,6 +164,13 @@ bool AccountList<T>::deleteaccount(std::string ID)
 		p = p->next; // 当前节点后移
 	}
 	return false; // 没有找到要删除的节点，返回删除失败
-};
+}
+template<typename T>
+inline int AccountList<T>::length()
+{
+	// TODO: 返回链表中的元素个数
+	return 5;
+}
+;
 
 #endif
