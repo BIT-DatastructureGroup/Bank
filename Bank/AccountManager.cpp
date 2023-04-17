@@ -44,9 +44,9 @@ bool AccountManager::QueryById(std::string ID, Account& out)
 	return false;
 }
 
-bool AccountManager::ModifyAccount(Account user,std::string s, int modifyType)
+bool AccountManager::ModifyAccount(std::string ID,std::string s, int modifyType)
 {
-	std::string ID = user.ID;
+	
 	// 修改邮箱
 	if (modifyType == 0)
 	{
@@ -65,16 +65,44 @@ bool AccountManager::ModifyAccount(Account user,std::string s, int modifyType)
 	}
 }
 
-bool AccountManager::Deposite(Account user, float money)
+bool AccountManager::ModifyAccount(Account newaccount, std::string s, int modifyType)
 {
-	std::string ID = user.ID;
-	accountList.deposit(ID, money);
+	std::string ID = newaccount.ID;
+	// 修改邮箱
+	if (modifyType == 0)
+	{
+		accountList.modifyEmail(ID, s);
+		return true;
+	}
+	// 修改电话
+	else if (modifyType == 1)
+	{
+		accountList.modifyPhone(ID, s);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool AccountManager::Deposite(std::string ID, float money)
+{
+	
+	accountList.deposite(ID, money);
 	return true;
 }
 
-bool AccountManager::Withdraw(Account user, float money)
+bool AccountManager::Deposite(Account newaccount, float money)
 {
-	std::string ID = user.ID;
+	std::string ID = newaccount.ID;
+	accountList.deposite(ID, money);
+	return true;
+}
+
+bool AccountManager::Withdraw(std::string ID, float money)
+{
+	
 	if (accountList.withdraw(ID, money))
 	{
 		return true;
@@ -82,9 +110,28 @@ bool AccountManager::Withdraw(Account user, float money)
 	return false;
 }
 
-bool AccountManager::DeleteUser(Account user)
+bool AccountManager::Withdraw(Account newaccount, float money)
 {
-	std::string ID = user.ID;
+	std::string ID = newaccount.ID;
+	if (accountList.withdraw(ID, money))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool AccountManager::DeleteUser(std::string ID)
+{
+	if (accountList.deleteaccount(ID))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool AccountManager::DeleteUser(Account newaccount)
+{
+	std::string ID = newaccount.ID;
 	if (accountList.deleteaccount(ID))
 	{
 		return true;

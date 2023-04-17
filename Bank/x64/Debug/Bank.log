@@ -1,1 +1,5 @@
-﻿  Bank.vcxproj -> C:\Users\14457\Desktop\代码\Bank\Bank\x64\Debug\Bank.exe
+﻿  AccountManager.cpp
+C:\Users\14269\Desktop\code\Bank\Bank\AccountManager.cpp(23,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  Bank.cpp
+  正在生成代码...
+  Bank.vcxproj -> C:\Users\14269\Desktop\code\Bank\Bank\x64\Debug\Bank.exe
