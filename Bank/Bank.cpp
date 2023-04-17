@@ -10,6 +10,7 @@
 using namespace std;
 int main()
 {
+    
     AccountManager AccountManager1;    //创建账户管理类，程序开始运行（同时读取文件，在类的构造函数中运行）
     while (1)
     {

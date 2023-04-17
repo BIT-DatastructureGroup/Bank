@@ -43,7 +43,7 @@ void AccountList<T>::showlist() //使用类型参数T
 		return;
 	}
 	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	p = head->next;
 	while (p != NULL)
 	{
 		std::cout << p->data << std::endl;
@@ -166,11 +166,17 @@ bool AccountList<T>::deleteaccount(std::string ID)
 	return false; // 没有找到要删除的节点，返回删除失败
 }
 template<typename T>
-inline int AccountList<T>::length()
+ int AccountList<T>::length()
 {
-	// TODO: 返回链表中的元素个数
-	return 5;
+	 AccountNode<T>* p = head;
+	 int num = 0;
+	 while (p != NULL)
+	 {
+		 p = p->next;
+		 num++;
+	 }
+	 return num-1;
 }
-;
+
 
 #endif

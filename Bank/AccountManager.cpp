@@ -9,23 +9,46 @@
 template class AccountList<Account>; 
 
 // 从文件中导入数据
+
 bool AccountManager::ImportFile()
 {
-	std::fstream* dat;
-	std::fstream DATA("account.dat", std::ios::in | std::ios::out | std::ios::binary);
-	dat = &DATA;
-	if (!DATA)
+	// 使用一个文件流对象，并指定打开模式为读写和二进制
+	std::fstream dat("account.dat", std::ios::in | std::ios::out | std::ios::binary);
+	// 检查文件是否打开成功
+	if (!dat)
 	{
 		std::cout << "未找到数据文件，正在重新创建..." << std::endl;
+		// 重新打开文件，并指定打开模式为写入和二进制
+		dat.open("account.dat", std::ios::out | std::ios::binary);
+		// 检查文件是否打开成功
+		if (!dat)
+		{
+			// 处理打开失败的情况
+			return false;
+		}
 	}
-	fopen("account.dat", "wb");
-	dat = new std::fstream("account.dat", std::ios::in | std::ios::out | std::ios::binary);
 	int cnt = 0;
-	dat->seekp(0);//设置文件里的起点
-	dat->write(reinterpret_cast<char*>(&cnt), sizeof(int));//把cnt写入文件
+	// 设置文件里的起点
+	dat.seekp(0);
+	// 把cnt写入文件
+	dat.write(reinterpret_cast<char*>(&cnt), sizeof(int));
+	// 检查写入是否成功
+	if (!dat)
+	{
+		// 处理写入失败的情况
+		return false;
+	}
 	std::cout << "数据库已创建！\n";
-	dat->seekp(0);
-	dat->read(reinterpret_cast<char*> (&cnt), sizeof(int));//读取账本中的cnt
+	// 设置文件里的起点
+	dat.seekg(0);
+	// 读取账本中的cnt
+	dat.read(reinterpret_cast<char*> (&cnt), sizeof(int));
+	// 检查读取是否成功
+	if (!dat)
+	{
+		// 处理读取失败的情况
+		return false;
+	}
 	if (cnt == 0)
 	{
 		std::cout << "当前数据库为空！请开始您的操作！\n";
@@ -36,16 +59,24 @@ bool AccountManager::ImportFile()
 		for (int i = 0; i < cnt; i++)
 		{
 			Account I;
-			dat->seekp(sizeof(int) + i * sizeof(Account));
-			dat->read(reinterpret_cast<char*>(&I), sizeof(Account));//把文件中Item赋值给I
-			accountList.add(I);//把I存到链表里
+			// 设置文件里的位置
+			dat.seekg(sizeof(int) + i * sizeof(Account));
+			// 把文件中Item赋值给I
+			dat.read(reinterpret_cast<char*>(&I), sizeof(Account));
+			// 检查读取是否成功
+			if (!dat)
+			{
+				// 处理读取失败的情况
+				return false;
+			}
+			// 把I存到链表里
+			accountList.add(I);
 			//I.print();
 		}
 		std::cout << "载入完成！\n";
 	}
-	return false;
+	return true;
 }
-
 //保存数据
 bool AccountManager::ExportFile()
 {
