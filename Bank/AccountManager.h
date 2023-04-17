@@ -22,16 +22,17 @@ public:
 
 
   bool CreateAccount(std::string ID, std::string name, std::string phone,
-    std::string email, std::string IDCard);
+    std::string email, std::string IDCard,bool manager);
 
   // 模糊查找，匹配所有关键字，管理员的功能
-   AccountList<Account> QueryBlur();
+   AccountList<Account> QueryBlur(std::string blur);
 
   // 用户登录的时候，通过他的ID找到他的全部信息
-  bool QueryById(std::string ID, Account& out);    //要求：查到有此ID，则赋值给out，return true；如果没有则return flase
+  bool QueryById(std::string ID, Account& out);
 
   // modifyType = 0 修改邮箱 1 是修改电话
-  bool ModifyAccount(Account newValue, int modifyType);
+  // True: 修改成功 False: 修改失败
+  bool ModifyAccount(Account user ,std::string s, int modifyType);
 
   // 存款函数
   bool Deposite(Account user, float money);

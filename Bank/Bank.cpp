@@ -12,8 +12,8 @@ int main()
 {
 
     AccountManager AccountManager1;    //创建账户管理类，程序开始运行（同时读取文件，在类的构造函数中运行）
-    while(1)
-    { 
+    while (1)
+    {
         cout << "欢迎来到数字银行！请选择您要进行的操作：" << endl;
         cout << "若已有账户，请输入数字1进行登录；若没有账户，请输入数字2申请开户;若要退出系统，请输入数字3" << endl;
         int load1 = 0, load2 = 0;
@@ -148,20 +148,20 @@ int main()
                             {
                                 cout << "*--------------------------------------------------------------------------*" << endl;
                                 cout << "身份标识号：" << temploaduse.ID << endl;
-                                cout << "姓名：" << temploaduse.name << endl; 
+                                cout << "姓名：" << temploaduse.name << endl;
                                 cout << "手机号：" << temploaduse.phone << endl;
                                 cout << "邮箱：" << temploaduse.email << endl;
                                 cout << "身份证号：" << temploaduse.IDCard << endl;
                                 cout << "银行卡号：" << temploaduse.Card << endl;
                                 cout << "账户余额：" << temploaduse.balance << endl;
                                 cout << "*--------------------------------------------------------------------------*" << endl;
-                            
+
                             }
                             else if (choice == 4)   //修改账户信息
                             {
                                 cout << "*--------------------------------------------------------------------------*" << endl;
                                 //选择修改内容
-                                int temp3 = 0;   
+                                int temp3 = 0;
                                 while (1)
                                 {
                                     cout << "若需修改身份标识号，请输入数字1" << endl;
@@ -278,12 +278,12 @@ int main()
                 cout << "请输入您的账户ID：";
                 Account temploaduse2;
                 string ID2;
-                while(1)
-                { 
+                while (1)
+                {
                     cin >> ID2;
                     if (AccountManager1.QueryById(ID2, temploaduse2))
                     {
-                        if (temploaduse2.Manager == 0)       //非管理员账号登录失败
+                        if (temploaduse2.manager == 0)       //非管理员账号登录失败
                         {
                             cout << "您的账户非管理员账户，请重新输入管理员账户！" << endl;
                             cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
@@ -295,11 +295,11 @@ int main()
                                 break;
                             }
                         }
-                        if (temploaduse2.Manager == 1)      //管理员账号登录成功
+                        if (temploaduse2.manager == 1)      //管理员账号登录成功
                         {
                             cout << "管理员" << temploaduse2.name << "登录成功！" << endl;
-                             while(1)
-                             { 
+                            while (1)
+                            {
                                 cout << "如需进行浏览全部账户信息，请输入数字1" << endl;
                                 cout << "如需进行查询特定账户信息，请输入数字2" << endl;
                                 cout << "请选择您要进行的操作：";
@@ -326,7 +326,7 @@ int main()
                                     cout << "*--------------------------------------------------------------------------*" << endl;
                                     break;
                                 }
-                             }
+                            }
                             break;   //退出判断是否是管理员账号的循环
                         }
                     }
@@ -349,7 +349,7 @@ int main()
                 {
                     break;
                 }
-                cin>> name >> phone >> mail >> IDCard >> Manager;
+                cin >> name >> phone >> mail >> IDCard >> Manager;
                 //搜索一下看看ID是否重复
                 Account tempac;
                 while (1)
@@ -364,7 +364,7 @@ int main()
                         break;
                     }
                 }
-                if (AccountManager1.CreateAccount(ID, name, phone, mail, IDCard,Manager))
+                if (AccountManager1.CreateAccount(ID, name, phone, mail, IDCard, Manager))
                 {
                     cout << "账户建立成功！欢迎登录！";
                     cout << "*--------------------------------------------------------------------------*" << endl;

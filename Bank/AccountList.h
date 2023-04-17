@@ -59,4 +59,44 @@ bool AccountList<T>::find(std::string id, T& out) //使用类型参数T
 	}
 	return false;
 }
+
+// 通过ID查找到对应的账户，修改邮箱为s
+template <typename T>
+void AccountList<T>::modifyEmail(std::string ID, std::string s)
+{
+	// TODO: 通过ID查找到对应的账户，修改邮箱为s
+};
+
+// 通过ID查找到对应的账户，修改电话为s
+template <typename T>
+void AccountList<T>::modifyPhone(std::string ID, std::string s)
+{
+	// TODO: 通过ID查找到对应的账户，修改电话为s
+};
+
+// 通过ID查找到对应的账户，增加金额money
+template <typename T>
+void AccountList<T>::deposit(std::string ID, float money)
+{
+	// TODO: 通过ID查找到对应的账户，增加金额money
+};
+
+// 通过ID查找到对应的账户，减少金额money
+// 成功取钱返回true, 失败返回false
+template <typename T>
+bool AccountList<T>::withdraw(std::string ID, float money)
+{	
+	// TODO: 通过ID查找到对应的账户，增加金额money
+	return false;
+};
+
+// 通过ID查找到对应的账户，删除用户
+// 成功删除返回true, 失败返回false
+template <typename T>
+bool AccountList<T>::deleteaccount(std::string ID, float money)
+{
+	// 通过ID查找到对应的账户，删除用户
+	return false;
+};
+
 #endif
