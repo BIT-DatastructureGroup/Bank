@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AccountList.cpp" />
+    <ClCompile Include="Account.cpp" />
     <ClCompile Include="AccountManager.cpp" />
     <ClCompile Include="AccountNode.cpp" />
     <ClCompile Include="Bank.cpp" />

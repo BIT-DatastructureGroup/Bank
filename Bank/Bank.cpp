@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+<<<<<<< HEAD
 #include"string"
 #include"Account.h"
 #include"AccountList.h"
@@ -197,5 +198,15 @@ int main()
             //  TODO：增加登录和后续操作
         }
     }
+=======
+#include<string>
+#include "AccountList.h"
+#include "AccountManager.h"
+using namespace std;
+int main()
+{
+    std::cout << "Hello World!\n";
+    Account a("123", "杨琮葳", "13456", "191", "23010", "22222", 141.2),b("456","fang","122","111","11111","222",122.3),c;
+>>>>>>> a59127993d4bb7480669f0736144328150f76ff3
 
 }
