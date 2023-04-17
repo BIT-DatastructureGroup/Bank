@@ -4,7 +4,7 @@
 
 class Account {
 private:
-
+	friend std::ostream& operator<<(std::ostream& out, const Account& a);
 public:
 	Account() { ID = "0"; name = "0"; phone = "0"; email = "0"; IDCard = "0"; Card = "0"; balance = 0; }
 	Account(std::string id, std::string na, std::string ph, std::string em, std::string IDC, std::string Ca, float ba) {

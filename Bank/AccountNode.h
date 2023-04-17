@@ -6,5 +6,6 @@ class AccountNode
 public:
 	Account data;
 	AccountNode* next;
+	AccountNode() {  next = NULL; }
 };
 #endif

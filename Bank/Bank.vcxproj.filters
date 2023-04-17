@@ -27,6 +27,12 @@
     <ClCompile Include="AccountList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Listfunctiontest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h">
