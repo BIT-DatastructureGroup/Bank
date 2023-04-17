@@ -81,6 +81,14 @@ int main()
                                     else
                                     {
                                         cout << "金额错误！请输入合法的金额！" << endl;
+                                        cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
+                                        cout << "您的选择是：";
+                                        int judge8 = 0;
+                                        cin >> judge8;
+                                        if (judge8 == 2)
+                                        {
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -124,6 +132,14 @@ int main()
                                     else
                                     {
                                         cout << "金额错误！请输入合法的金额！" << endl;
+                                        cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
+                                        cout << "您的选择是：";
+                                        int judge7 = 0;
+                                        cin >> judge7;
+                                        if (judge7 == 2)
+                                        {
+                                            break;
+                                        }
                                     }
                                 }
                                 break;
@@ -245,6 +261,14 @@ int main()
                     else
                     {
                         cout << "未查询到此ID账户，登录失败，请重新输入ID账号!" << endl;
+                        cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
+                        cout << "您的选择是：";
+                        int judge6 = 0;
+                        cin >> judge6;
+                        if (judge6 == 2)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -262,7 +286,14 @@ int main()
                         if (temploaduse2.Manager == 0)       //非管理员账号登录失败
                         {
                             cout << "您的账户非管理员账户，请重新输入管理员账户！" << endl;
-
+                            cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
+                            cout << "您的选择是：";
+                            int judge7 = 0;
+                            cin >> judge7;
+                            if (judge7 == 2)
+                            {
+                                break;
+                            }
                         }
                         if (temploaduse2.Manager == 1)      //管理员账号登录成功
                         {
