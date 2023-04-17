@@ -17,7 +17,7 @@ public:
 	bool find(std::string id, T& out); //使用类型参数K作为关键字类型，T作为元素类型
 };
 template <typename T> //模板声明
-void AccountList<T>::add(T account) //使用类型参数T和K
+void AccountList<T>::add(T account) //使用类型参数T
 {
 	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
 	p = head;
@@ -28,7 +28,7 @@ void AccountList<T>::add(T account) //使用类型参数T和K
 	temp->next = NULL;
 }
 template <typename T> //模板声明
-void AccountList<T>::showlist() //使用类型参数T和K
+void AccountList<T>::showlist() //使用类型参数T
 {
 	if (head == NULL)
 	{
@@ -44,7 +44,7 @@ void AccountList<T>::showlist() //使用类型参数T和K
 	}
 }
 template <typename T> //模板声明
-bool AccountList<T>::find(std::string id, T& out) //使用类型参数T和K
+bool AccountList<T>::find(std::string id, T& out) //使用类型参数T
 {
 	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
 	p = head;
