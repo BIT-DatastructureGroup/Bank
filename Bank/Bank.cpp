@@ -289,7 +289,7 @@ int main()
                                 cout << "您的选择是：";
                                 int judge5 = 0;
                                 cin >> judge5;
-                                if (judge == 2)
+                                if (judge5 == 2)
                                 {
                                     cout << "已安全退出账号！" << endl;
                                     cout << "*--------------------------------------------------------------------------*" << endl;
@@ -313,11 +313,12 @@ int main()
                 cout << "请按顺序输入您的ID（身份标识号）、姓名、电话号码、邮箱、身份证号码、是否为管理员（是输入1,不是则输入0）：(若想退出开户操作，请输入“退出”)";
                 string ID, name, phone, mail, IDCard;
                 int Manager = 3;
-                cin >> ID >> name >> phone >> mail >> IDCard>>Manager ;
+                cin >> ID;
                 if (ID == "退出")  //退出创立操作
                 {
                     break;
                 }
+                cin>> name >> phone >> mail >> IDCard >> Manager;
                 //搜索一下看看ID是否重复
                 Account tempac;
                 while (1)
