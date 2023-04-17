@@ -24,9 +24,6 @@
     <ClCompile Include="AccountNode.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="AccountList.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Account.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
-    <ClCompile Include="AccountList.cpp" />
     <ClCompile Include="AccountManager.cpp" />
     <ClCompile Include="AccountNode.cpp" />
     <ClCompile Include="Bank.cpp" />

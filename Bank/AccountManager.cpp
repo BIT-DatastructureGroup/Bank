@@ -3,17 +3,18 @@
 #include <string>
 #include<ctime>
 
-
+// 实例化模板类
+template class AccountList<Account>; 
 
 bool AccountManager::ImportFile()
 {
-  return false;
+	return false;
 }
 
 bool AccountManager::ExportFile()
 {
 
-  return false;
+	return false;
 }
 
 bool AccountManager::CreateAccount(std::string ID, std::string name, std::string phone, std::string email, std::string IDCard)
@@ -24,40 +25,40 @@ bool AccountManager::CreateAccount(std::string ID, std::string name, std::string
 	std::string Card = std::to_string(randomNumber);
 	Account newAccount(ID, name, phone, email, IDCard, Card, 0);
 	accountList.add(newAccount);
-  return true;
+	return true;
 }
 
-std::vector<Account> AccountManager::QueryBlur()
+AccountList<Account> AccountManager::QueryBlur()
 {
-  return std::vector<Account>();
+	return AccountList<Account>();
 }
 
 bool AccountManager::QueryById(std::string ID, Account& out)
 {
-  return false;
+	return false;
 }
 
 bool AccountManager::ModifyAccount(Account newValue, int modifyType)
 {
-  return false;
+	return false;
 }
 
 bool AccountManager::Deposite(Account user, float money)
 {
-  return false;
+	return false;
 }
 
 bool AccountManager::Withdraw(Account user, float money)
 {
-  return false;
+	return false;
 }
 
 bool AccountManager::DeleteUser(Account user)
 {
-  return false;
+	return false;
 }
 
-std::vector<Account> AccountManager::getAccounts()
+AccountList<Account> AccountManager::getAccounts()
 {
-  return std::vector<Account>();
+	return AccountList<Account>();
 }

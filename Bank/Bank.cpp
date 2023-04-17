@@ -9,14 +9,7 @@ using namespace std;
 int main()
 {
     std::cout << "Hello World!\n";
-    AccountList l;
-    l.showlist();
     Account a("123", "杨琮葳", "13456", "191", "23010", "22222", 141.2),b("456","fang","122","111","11111","222",122.3),c;
-    l.add(a);
-    l.add(b);
-    l.showlist();
-    l.find("123", c);
-    cout << c;
 
 }
 

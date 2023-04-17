@@ -1,2 +1,4 @@
-﻿  AccountList.cpp
+﻿  Bank.cpp
+D:\code for group\Bank\Bank\Bank.cpp(12,74): warning C4305: “参数”: 从“double”到“float”截断
+D:\code for group\Bank\Bank\Bank.cpp(12,122): warning C4305: “参数”: 从“double”到“float”截断
   Bank.vcxproj -> D:\code for group\Bank\Bank\x64\Debug\Bank.exe
