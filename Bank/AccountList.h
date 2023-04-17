@@ -15,6 +15,11 @@ public:
 	void add(T account); //使用类型参数T作为元素类型
 	void showlist();
 	bool find(std::string id, T& out); //使用类型参数K作为关键字类型，T作为元素类型
+	void modifyEmail(std::string ID, std::string s);
+	void modifyPhone(std::string ID, std::string s);
+	void deposit(std::string ID, float money);
+	bool withdraw(std::string ID, float money);
+	bool deleteaccount(std::string ID);
 };
 template <typename T> //模板声明
 void AccountList<T>::add(T account) //使用类型参数T
@@ -93,7 +98,7 @@ bool AccountList<T>::withdraw(std::string ID, float money)
 // 通过ID查找到对应的账户，删除用户
 // 成功删除返回true, 失败返回false
 template <typename T>
-bool AccountList<T>::deleteaccount(std::string ID, float money)
+bool AccountList<T>::deleteaccount(std::string ID)
 {
 	// 通过ID查找到对应的账户，删除用户
 	return false;

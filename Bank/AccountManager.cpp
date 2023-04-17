@@ -85,7 +85,7 @@ bool AccountManager::Withdraw(Account user, float money)
 bool AccountManager::DeleteUser(Account user)
 {
 	std::string ID = user.ID;
-	if (accountList.deleteacconut(ID))
+	if (accountList.deleteaccount(ID))
 	{
 		return true;
 	}
