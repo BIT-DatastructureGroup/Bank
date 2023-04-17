@@ -28,7 +28,7 @@ public:
   std::vector<Account> QueryBlur();
 
   // 用户登录的时候，通过他的ID找到他的全部信息
-  bool QueryById(std::string ID, Account& out);
+  bool QueryById(std::string ID, Account& out);    //要求：查到有此ID，则赋值给out，return true；如果没有则return flase
 
   // modifyType = 0 修改邮箱 1 是修改电话
   bool ModifyAccount(Account newValue, int modifyType);
