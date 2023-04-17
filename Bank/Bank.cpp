@@ -16,7 +16,7 @@ int main()
     while (11)
     {
         cout << "欢迎来到数字银行主页！请选择您要进行的操作：" << endl;
-        cout << "若已有账户，请输入数字1进行登录" << endl<< "若没有账户，请输入数字2申请开户"<<endl<<"若要退出系统，请输入数字3" << endl;
+        cout << "若已有账户，请输入数字1进行登录" << endl << "若没有账户，请输入数字2申请开户" << endl << "若要退出系统，请输入数字3" << endl;
         int load1 = 0, load2 = 0;
         cin >> load1;
         if (load1 != 1 && load1 != 2 && load1 != 3)
@@ -34,8 +34,8 @@ int main()
             count1 = 0;
             cout << "*--------------------------------------------------------------------------*" << endl;
             int count2 = 1;
-            while(count2)
-            { 
+            while (count2)
+            {
                 cout << "若选择客户登录，请输入数字1；若选择管理员登录，请输入数字2" << endl;
                 cout << "请选择登录方式：";
                 cin >> load2;
@@ -90,7 +90,7 @@ int main()
                                         cin >> money_in;
                                         if (money_in >= 0)
                                         {
-                                            AccountManager1.Deposite(temploaduse,money_in);
+                                            AccountManager1.Deposite(temploaduse.ID, money_in);
                                             cout << "存款成功！您现在的账户余额为" << temploaduse.balance << endl;
                                             cout << "若要继续存款，请输入数字1；若要退出存款操作，请输入数字2：";
                                             int judge1 = 0;
@@ -376,7 +376,7 @@ int main()
         {
             while (1)
             {
-                cout << "请按顺序输入您的ID（身份标识号）、姓名、电话号码、邮箱、身份证号码、是否为管理员（是输入1,不是则输入0）：(若想退出开户操作，请输入“退出”)"<<endl;
+                cout << "请按顺序输入您的ID（身份标识号）、姓名、电话号码、邮箱、身份证号码、是否为管理员（是输入1,不是则输入0）：(若想退出开户操作，请输入“退出”)" << endl;
                 string ID, name, phone, mail, IDCard;
                 int Manager = 3;
                 cin >> ID;
@@ -401,7 +401,7 @@ int main()
                 }
                 if (AccountManager1.CreateAccount(ID, name, phone, mail, IDCard, Manager))
                 {
-                    cout << "账户建立成功！欢迎登录！"<<endl;
+                    cout << "账户建立成功！欢迎登录！" << endl;
                     cout << "*--------------------------------------------------------------------------*" << endl;
                     break;
                 }

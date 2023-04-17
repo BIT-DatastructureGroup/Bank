@@ -17,9 +17,12 @@ public:
 	bool find(std::string id, T& out); //使用类型参数K作为关键字类型，T作为元素类型
 	bool modifyEmail(std::string ID, std::string s);
 	bool modifyPhone(std::string ID, std::string s);
-	bool deposit(std::string ID, float money);
+	bool deposite(std::string ID, float money);
 	bool withdraw(std::string ID, float money);
 	bool deleteaccount(std::string ID);
+
+	// TODO: 返回链表中的元素个数
+	int length();
 };
 template <typename T> //模板声明
 void AccountList<T>::add(T account) //使用类型参数T
@@ -40,7 +43,7 @@ void AccountList<T>::showlist() //使用类型参数T
 		return;
 	}
 	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	p = head->next;
 	while (p != NULL)
 	{
 		std::cout << p->data << std::endl;
@@ -68,8 +71,7 @@ bool AccountList<T>::find(std::string id, T& out) //使用类型参数T
 template <typename T>
 bool AccountList<T>::modifyEmail(std::string ID, std::string s)
 {
-	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	AccountNode<T>* p = head;
 	while (p != NULL)
 	{
 		if (p->data.ID == ID)
@@ -87,8 +89,8 @@ bool AccountList<T>::modifyEmail(std::string ID, std::string s)
 template <typename T>
 bool AccountList<T>::modifyPhone(std::string ID, std::string s)
 {
-	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	
+	AccountNode<T>* p = head;
 	while (p != NULL)
 	{
 		if (p->data.ID == ID)
@@ -103,7 +105,7 @@ bool AccountList<T>::modifyPhone(std::string ID, std::string s)
 
 // 通过ID查找到对应的账户，增加金额money
 template <typename T>
-bool AccountList<T>::deposit(std::string ID, float money)
+bool AccountList<T>::deposite(std::string ID, float money)
 {
 	AccountNode<T>* p = head; //使用类型参数T
 	while (p != NULL)
@@ -123,8 +125,7 @@ bool AccountList<T>::deposit(std::string ID, float money)
 template <typename T>
 bool AccountList<T>::withdraw(std::string ID, float money)
 {	
-	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	AccountNode<T>* p = head;
 	while (p != NULL)
 	{
 		if (p->data.ID == ID)
@@ -163,6 +164,19 @@ bool AccountList<T>::deleteaccount(std::string ID)
 		p = p->next; // 当前节点后移
 	}
 	return false; // 没有找到要删除的节点，返回删除失败
-};
+}
+template<typename T>
+ int AccountList<T>::length()
+{
+	 AccountNode<T>* p = head;
+	 int num = 0;
+	 while (p != NULL)
+	 {
+		 p = p->next;
+		 num++;
+	 }
+	 return num-1;
+}
+
 
 #endif
