@@ -15,17 +15,16 @@ public:
 	void add(T account); //使用类型参数T作为元素类型
 	void showlist();
 	bool find(std::string id, T& out); //使用类型参数K作为关键字类型，T作为元素类型
-	void modifyEmail(std::string ID, std::string s);
-	void modifyPhone(std::string ID, std::string s);
-	void deposit(std::string ID, float money);
+	bool modifyEmail(std::string ID, std::string s);
+	bool modifyPhone(std::string ID, std::string s);
+	bool deposit(std::string ID, float money);
 	bool withdraw(std::string ID, float money);
 	bool deleteaccount(std::string ID);
 };
 template <typename T> //模板声明
 void AccountList<T>::add(T account) //使用类型参数T
 {
-	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	AccountNode<T>* p = head; //使用类型参数T
 	for (; p->next != NULL; p = p->next);
 	AccountNode<T>* temp = new AccountNode<T>; //使用类型参数T
 	temp->data = account;
@@ -67,23 +66,56 @@ bool AccountList<T>::find(std::string id, T& out) //使用类型参数T
 
 // 通过ID查找到对应的账户，修改邮箱为s
 template <typename T>
-void AccountList<T>::modifyEmail(std::string ID, std::string s)
+bool AccountList<T>::modifyEmail(std::string ID, std::string s)
 {
-	// TODO: 通过ID查找到对应的账户，修改邮箱为s
+	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
+	p = head;
+	while (p != NULL)
+	{
+		if (p->data.ID == ID)
+		{
+			p->data.email=s;
+			return true;
+		}
+		p = p->next;
+
+	}
+	return false;
 };
 
 // 通过ID查找到对应的账户，修改电话为s
 template <typename T>
-void AccountList<T>::modifyPhone(std::string ID, std::string s)
+bool AccountList<T>::modifyPhone(std::string ID, std::string s)
 {
-	// TODO: 通过ID查找到对应的账户，修改电话为s
+	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
+	p = head;
+	while (p != NULL)
+	{
+		if (p->data.ID == ID)
+		{
+			p->data.phone = s;
+			return true;
+		}
+		p = p->next;
+	}
+	return false;
 };
 
 // 通过ID查找到对应的账户，增加金额money
 template <typename T>
-void AccountList<T>::deposit(std::string ID, float money)
+bool AccountList<T>::deposit(std::string ID, float money)
 {
-	// TODO: 通过ID查找到对应的账户，增加金额money
+	AccountNode<T>* p = head; //使用类型参数T
+	while (p != NULL)
+	{
+		if (p->data.ID == ID)
+		{
+			p->data.balance+=money;
+			return true;
+		}
+		p = p->next;
+	}
+	return false;
 };
 
 // 通过ID查找到对应的账户，减少金额money
@@ -91,7 +123,17 @@ void AccountList<T>::deposit(std::string ID, float money)
 template <typename T>
 bool AccountList<T>::withdraw(std::string ID, float money)
 {	
-	// TODO: 通过ID查找到对应的账户，增加金额money
+	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
+	p = head;
+	while (p != NULL)
+	{
+		if (p->data.ID == ID)
+		{
+			p->data.balance -= money;
+			return true;
+		}
+		p = p->next;
+	}
 	return false;
 };
 
@@ -100,8 +142,27 @@ bool AccountList<T>::withdraw(std::string ID, float money)
 template <typename T>
 bool AccountList<T>::deleteaccount(std::string ID)
 {
-	// 通过ID查找到对应的账户，删除用户
-	return false;
+	AccountNode<T>* p = head; //使用类型参数T
+	AccountNode<T>* last = NULL;
+	// 判断头节点是否需要删除
+	if (p != NULL && p->data.ID == ID) {
+		head = p->next; // 更新头节点
+		delete p; // 删除原头节点
+		return true; // 返回删除成功
+	}
+	// 循环查找并删除节点
+	while (p != NULL)
+	{
+		if (p->data.ID == ID)
+		{
+			last->next = p->next; // 更新前驱节点
+			delete p; // 删除当前节点
+			return true; // 返回删除成功
+		}
+		last = p; // 前驱节点后移
+		p = p->next; // 当前节点后移
+	}
+	return false; // 没有找到要删除的节点，返回删除失败
 };
 
 #endif
