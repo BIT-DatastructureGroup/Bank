@@ -4,6 +4,7 @@
 #include "Account.h"
 #include "AccountList.h"
 #include<string>
+#include<vector>
 // 账户管理类
 class AccountManager {
 private:
@@ -47,8 +48,8 @@ public:
   bool DeleteUser(std::string ID);
   bool DeleteUser(Account newaccount);
 
-  // 获取列表
-  AccountList<Account> getAccounts();
+  // 获取vector包含目前所有Account
+  std::vector<Account> getAccounts();
 
 };
 #endif

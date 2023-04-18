@@ -4,6 +4,7 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include<vector>
 
 // 实例化模板类
 template class AccountList<Account>;
@@ -215,7 +216,8 @@ bool AccountManager::DeleteUser(Account newaccount)
   return false;
 }
 
-AccountList<Account> AccountManager::getAccounts()
+std::vector<Account> AccountManager::getAccounts()
 {
-  return AccountList<Account>(accountList);
+    std::vector<Account> v1 = accountList.listtovector();
+    return v1;
 }

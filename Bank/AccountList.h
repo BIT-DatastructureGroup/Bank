@@ -3,6 +3,7 @@
 #include "AccountNode.h"
 #include <string>
 #include <iostream>
+#include <vector>
 template <typename T> // 类型参数表
 class AccountList     // 类模板名
 {
@@ -31,6 +32,7 @@ public:
   bool deposite(std::string ID, float money);
   bool withdraw(std::string ID, float money);
   bool deleteaccount(std::string ID);
+  std::vector<Account> listtovector();
 
   // TODO: 返回链表中的元素个数
   int length();
@@ -180,6 +182,26 @@ int AccountList<T>::length()
     num++;
   }
   return num;
+}
+
+template <typename T>                             // 模板声明
+std::vector<Account> AccountList<T>::listtovector() // 使用类型参数T
+{
+    AccountNode<T>* p = head->next; // 使用类型参数T
+    int num = length();
+    std::vector<Account> v1(num);
+    while (p != NULL)
+    {
+        v1.push_back(p->data);
+        p = p->next;
+    }
+    /*测试用
+    for (std::vector<Account>::iterator iter = v1.begin(); iter != v1.end(); iter++)
+    {
+        Account a = *iter;
+        std::cout << a;
+    }*/
+    return v1;
 }
 
 #endif
