@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include<fstream>
 template <typename T> // 类型参数表
 class AccountList     // 类模板名
 {
@@ -33,6 +34,7 @@ public:
   bool withdraw(std::string ID, float money);
   bool deleteaccount(std::string ID);
   std::vector<Account> listtovector();
+  bool savetxt();
 
   // TODO: 返回链表中的元素个数
   int length();
@@ -202,6 +204,33 @@ std::vector<Account> AccountList<T>::listtovector() // 使用类型参数T
         std::cout << a;
     }*/
     return v1;
+}
+
+template <typename T>                             // 模板声明
+bool AccountList<T>::savetxt() // 使用类型参数T
+{
+    std::ofstream fout;
+    fout.open("accountlist.txt");
+    if (!(fout.is_open()))
+    {
+        std::cout << "文件打开失败！" << std::endl;
+        return false;
+    }
+    AccountNode<T>* p = head->next; // 使用类型参数T
+    int num = length();
+    while (p != NULL)
+    {
+        std::string ID = p->data.ID;
+        std::string name = p->data.name;
+        std::string phone = p->data.phone;
+        std::string email = p->data.email;
+        std::string IDCard = p->data.IDCard;
+        float balance = p->data.balance;
+        bool manager = p->data.manager;
+        fout << ID << " " << name << " " << phone << " " << email << " " << IDCard << " " << balance << " " << manager << std::endl;
+        p = p->next;
+    }
+    fout.close();
 }
 
 #endif

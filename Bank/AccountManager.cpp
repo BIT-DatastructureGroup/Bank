@@ -13,76 +13,79 @@ template class AccountList<Account>;
 
 bool AccountManager::ImportFile()
 {
-  // 使用一个文件流对象，并指定打开模式为读写和二进制
-  std::fstream dat("account.dat", std::ios::in | std::ios::out | std::ios::binary);
-  // 检查文件是否打开成功
-  if (!dat)
-  {
-    std::cout << "未找到数据文件，正在重新创建..." << std::endl;
-    // 重新打开文件，并指定打开模式为写入和二进制
-    dat.open("account.dat", std::ios::out | std::ios::binary);
-    // 检查文件是否打开成功
-    if (!dat)
-    {
-      // 处理打开失败的情况
-      return false;
-    }
-  }
-  int cnt = 0;
-  // 设置文件里的起点
-  dat.seekp(0);
-  // 把cnt写入文件
-  dat.write(reinterpret_cast<char *>(&cnt), sizeof(int));
-  // 检查写入是否成功
-  if (!dat)
-  {
-    // 处理写入失败的情况
-    return false;
-  }
-  std::cout << "数据库已创建！\n";
-  // 设置文件里的起点
-  dat.seekg(0);
-  // 读取账本中的cnt
-  dat.read(reinterpret_cast<char *>(&cnt), sizeof(int));
-  // 检查读取是否成功
-  if (!dat)
-  {
-    // 处理读取失败的情况
-    return false;
-  }
-  if (cnt == 0)
-  {
-    std::cout << "当前数据库为空！请开始您的操作！\n";
-  }
-  else
-  {
-    std::cout << "当前已有 " << cnt << "项账目，正在载入中...\n";
-    for (int i = 0; i < cnt; i++)
-    {
-      Account I;
-      // 设置文件里的位置
-      dat.seekg(sizeof(int) + i * sizeof(Account));
-      // 把文件中Item赋值给I
-      dat.read(reinterpret_cast<char *>(&I), sizeof(Account));
-      // 检查读取是否成功
-      if (!dat)
-      {
-        // 处理读取失败的情况
-        return false;
-      }
-      // 把I存到链表里
-      accountList.add(I);
-      // I.print();
-    }
-    std::cout << "载入完成！\n";
-  }
+//  // 使用一个文件流对象，并指定打开模式为读写和二进制
+//  std::fstream dat("account.dat", std::ios::in | std::ios::out | std::ios::binary);
+//  // 检查文件是否打开成功
+//  if (!dat)
+//  {
+//    std::cout << "未找到数据文件，正在重新创建..." << std::endl;
+//    // 重新打开文件，并指定打开模式为写入和二进制
+//    dat.open("account.dat", std::ios::out | std::ios::binary);
+//    // 检查文件是否打开成功
+//    if (!dat)
+//    {
+//      // 处理打开失败的情况
+//      return false;
+//    }
+//  }
+//  int cnt = 0;
+//  // 设置文件里的起点
+//  dat.seekp(0);
+//  // 把cnt写入文件
+//  dat.write(reinterpret_cast<char *>(&cnt), sizeof(int));
+//  // 检查写入是否成功
+//  if (!dat)
+//  {
+//    // 处理写入失败的情况
+//    return false;
+//  }
+//  std::cout << "数据库已创建！\n";
+//  // 设置文件里的起点
+//  dat.seekg(0);
+//  // 读取账本中的cnt
+//  dat.read(reinterpret_cast<char *>(&cnt), sizeof(int));
+//  // 检查读取是否成功
+//  if (!dat)
+//  {
+//    // 处理读取失败的情况
+//    return false;
+//  }
+//  if (cnt == 0)
+//  {
+//    std::cout << "当前数据库为空！请开始您的操作！\n";
+//  }
+//  else
+//  {
+//    std::cout << "当前已有 " << cnt << "项账目，正在载入中...\n";
+//    for (int i = 0; i < cnt; i++)
+//    {
+//      Account I;
+//      // 设置文件里的位置
+//      dat.seekg(sizeof(int) + i * sizeof(Account));
+//      // 把文件中Item赋值给I
+//      dat.read(reinterpret_cast<char *>(&I), sizeof(Account));
+//      // 检查读取是否成功
+//      if (!dat)
+//      {
+//        // 处理读取失败的情况
+//        return false;
+//      }
+//      // 把I存到链表里
+//      accountList.add(I);
+//      // I.print();
+//    }
+//    std::cout << "载入完成！\n";
+//  }
   return true;
 }
 // 保存数据
 bool AccountManager::ExportFile()
 {
-
-  return false;
+    if (accountList.savetxt())
+    {
+        return true;
+    };
+    return false;
 }
 
 bool AccountManager::CreateAccount(std::string ID, std::string name, std::string phone, std::string email, std::string IDCard, bool manager)
