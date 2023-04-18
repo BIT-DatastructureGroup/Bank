@@ -42,8 +42,7 @@ void AccountList<T>::showlist() //使用类型参数T
 		std::cout << "空链表\n";
 		return;
 	}
-	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head->next;
+	AccountNode<T>* p = head->next; //使用类型参数T
 	while (p != NULL)
 	{
 		std::cout << p->data << std::endl;
@@ -53,8 +52,7 @@ void AccountList<T>::showlist() //使用类型参数T
 template <typename T> //模板声明
 bool AccountList<T>::find(std::string id, T& out) //使用类型参数T
 {
-	AccountNode<T>* p = new AccountNode<T>; //使用类型参数T
-	p = head;
+	AccountNode<T>* p = head; //使用类型参数T
 	while (p != NULL)
 	{
 		if (p->data.ID == id)
