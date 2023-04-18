@@ -35,10 +35,13 @@ public:
   bool deleteaccount(std::string ID);
   std::vector<Account> listtovector();
   bool savetxt();
+  bool loadtxt();
 
   // TODO: 返回链表中的元素个数
   int length();
 };
+
+// 增加新的元素在表的末尾
 template <typename T>               // 模板声明
 void AccountList<T>::add(T account) // 使用类型参数T
 {
@@ -173,6 +176,8 @@ bool AccountList<T>::deleteaccount(std::string ID)
   }
   return false; // 没有找到要删除的节点，返回删除失败
 }
+
+// 返回链表中元素个数
 template <typename T>
 int AccountList<T>::length()
 {
@@ -186,6 +191,7 @@ int AccountList<T>::length()
   return num;
 }
 
+//将链表转为vector返回
 template <typename T>                             // 模板声明
 std::vector<Account> AccountList<T>::listtovector() // 使用类型参数T
 {
@@ -206,6 +212,7 @@ std::vector<Account> AccountList<T>::listtovector() // 使用类型参数T
     return v1;
 }
 
+//将链表保存为txt
 template <typename T>                             // 模板声明
 bool AccountList<T>::savetxt() // 使用类型参数T
 {
@@ -225,12 +232,66 @@ bool AccountList<T>::savetxt() // 使用类型参数T
         std::string phone = p->data.phone;
         std::string email = p->data.email;
         std::string IDCard = p->data.IDCard;
+        std::string Card = p->data.Card;
         float balance = p->data.balance;
         bool manager = p->data.manager;
-        fout << ID << " " << name << " " << phone << " " << email << " " << IDCard << " " << balance << " " << manager << std::endl;
+        fout << ID << " " << name << " " << phone << " " << email << " " << IDCard << " " << Card << " " << balance << " " << manager << std::endl;
         p = p->next;
     }
     fout.close();
 }
 
+//把txt中的文件读取出来
+template <typename T>                             // 模板声明
+bool AccountList<T>::loadtxt() // 使用类型参数T
+{
+    std::ifstream fin;
+    fin.open("accountlist.txt");
+    if (!(fin.is_open()))
+    {
+        std::cout << "读取数据打开文件失败!" << std::endl;
+        return false;
+    }
+    std::string temp;
+    std::cout << "调试中..." << std::endl;
+    while (std::getline(fin, temp))
+    {
+        std::string ID;
+        std::string name;
+        std::string phone;
+        std::string email;
+        std::string IDCard;
+        std::string Ca;
+        std::string strbalance;
+        std::string strmanager;
+        float balance;
+        bool manager;
+        std::vector<std::string> v;
+        int start, end;
+        start = end = 0;
+        char dl = ' ';
+        while ((start = temp.find_first_not_of(dl, end)) != std::string::npos) {
+            end = temp.find(dl, start);
+            v.push_back(temp.substr(start, end - start));
+        }
+        for (int i = 0; i < v.size(); i++) {
+            std::cout << v[i] << std::endl;
+        }
+        ID = v[0];
+        name = v[1];
+        phone = v[2];
+        email = v[3];
+        IDCard = v[4];
+        Ca = v[5];
+        strbalance = v[6];
+        strmanager = v[7];
+        balance = std::stof(strbalance);
+        manager = std::stoi(strmanager);
+        
+        Account a(ID, name, phone, email, IDCard, Ca,balance, manager);
+        add(a);
+    }
+    std::cout << "调试结束..." << std::endl;
+    fin.close();
+}
 #endif
