@@ -160,9 +160,12 @@ bool AccountManager::Deposite(std::string ID, float money)
 	return true;
 }
 
-bool AccountManager::Deposite(Account newaccount, float money)
+bool AccountManager::Deposite(Account &newaccount, float money)
 {
 	std::string ID = newaccount.ID;
+	//将传进来的账户引用的余额加上money
+	newaccount.balance += money;
+	//在链表中进行同样的操作
 	accountList.deposite(ID, money);
 	return true;
 }

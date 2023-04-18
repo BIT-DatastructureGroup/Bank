@@ -90,7 +90,7 @@ int main()
                                         cin >> money_in;
                                         if (money_in >= 0)
                                         {
-                                            AccountManager1.Deposite(temploaduse.ID, money_in);
+                                            AccountManager1.Deposite(temploaduse, money_in);
                                             cout << "存款成功！您现在的账户余额为" << temploaduse.balance << endl;
                                             cout << "若要继续存款，请输入数字1；若要退出存款操作，请输入数字2：";
                                             int judge1 = 0;

@@ -37,7 +37,7 @@ public:
 
   // 存款函数
   bool Deposite(std::string ID, float money);
-  bool Deposite(Account newaccount, float money);
+  bool Deposite(Account &newaccount, float money);
 
   // 取款函数
   bool Withdraw(std::string ID, float money);
