@@ -411,9 +411,9 @@ void CreateAccountPage()
 int main()
 {
     //测试一些List和Manager类的代码，没什么用
-    AccountManager AccountManager1;
-    AccountManager1.ImportFile();
-    cout << AccountManager1.getnum() << endl;
+    //AccountManager AccountManager1;
+    //AccountManager1.ImportFile();
+    //cout << AccountManager1.getnum() << endl;
     //AccountManager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
     //AccountManager1.Deposite("fuban", 10);
     //AccountManager1.CreateAccount("shabi", "yangwu", "18103927335", "1426@qq.com", "12345678910", 0);
@@ -424,39 +424,39 @@ int main()
     AccountManager1.Deposite("帅哥", 1000000.99);*/
     //AccountManager1.Withdraw("帅哥", 900000.81);
 
-    vector<Account> a = AccountManager1.getAccounts();
+    //vector<Account> a = AccountManager1.getAccounts();
     //a.deposite("fuban", 5);
     /*for (std::vector<Account>::iterator iter = a.begin(); iter != a.end(); iter++)
     {
         Account a = *iter;
         std::cout << a;
     }*/
-    AccountManager1.ExportFile();
+    //AccountManager1.ExportFile();
 
 
-  //while (true)
-  //{
-  //  WelcomeTitle();
-  //  int choice1 = 0;
-  //  cin >> choice1;
-  //  if (choice1 != 1 && choice1 != 2 && choice1 != 3)
-  //  {
-  //    cout << "输入错误！请在数字1-3内进行选择！" << endl;
-  //    Divider();
-  //  }
-  //  if (choice1 == 3) // 退出系统
-  //  {
-  //    break;
-  //  }
-  //  if (choice1 == 1) // 登录
-  //  {
-  //    system("cls");
-  //    LoginPage();
-  //  }
-  //  if (choice1 == 2) // 申请开户
-  //  {
-  //    system("cls");
-  //    CreateAccountPage();
-  //  }
-  //}
+  while (true)
+  {
+    WelcomeTitle();
+    int choice1 = 0;
+    cin >> choice1;
+    if (choice1 != 1 && choice1 != 2 && choice1 != 3)
+    {
+      cout << "输入错误！请在数字1-3内进行选择！" << endl;
+      Divider();
+    }
+    if (choice1 == 3) // 退出系统
+    {
+      break;
+    }
+    if (choice1 == 1) // 登录
+    {
+      system("cls");
+      LoginPage();
+    }
+    if (choice1 == 2) // 申请开户
+    {
+      system("cls");
+      CreateAccountPage();
+    }
+  }
 }
