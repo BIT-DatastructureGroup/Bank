@@ -51,5 +51,8 @@ public:
   // 获取vector包含目前所有Account
   std::vector<Account> getAccounts();
 
+  //获取当前有多少个账目
+  int getnum();
+
 };
 #endif

@@ -31,6 +31,12 @@ bool AccountManager::ExportFile()
 
 bool AccountManager::CreateAccount(std::string ID, std::string name, std::string phone, std::string email, std::string IDCard, bool manager)
 {
+    Account temp;
+    if (accountList.find(ID, temp))
+    {
+        std::cout << "ID以存在，请重新创建！" << std::endl;
+        return false;
+    }
   // 生成6位随机数
   static bool inited = false;
   if (!inited)
@@ -164,4 +170,10 @@ std::vector<Account> AccountManager::getAccounts()
 {
     std::vector<Account> v1 = accountList.listtovector();
     return v1;
+}
+
+int AccountManager::getnum()
+{
+    
+    return accountList.length();
 }

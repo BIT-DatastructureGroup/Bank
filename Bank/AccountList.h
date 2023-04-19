@@ -188,7 +188,7 @@ int AccountList<T>::length()
     p = p->next;
     num++;
   }
-  return num;
+  return num-1;
 }
 
 //将链表转为vector返回
@@ -196,14 +196,15 @@ template <typename T>                             // 模板声明
 std::vector<Account> AccountList<T>::listtovector() // 使用类型参数T
 {
     AccountNode<T>* p = head->next; // 使用类型参数T
-    int num = length();
-    std::vector<Account> v1(num);
+    //int num = length();
+    std::vector<Account> v1;
     while (p != NULL)
     {
         v1.push_back(p->data);
         p = p->next;
     }
-    /*测试用
+
+    /*std::cout <<"vector大小为："<< num << std::endl;
     for (std::vector<Account>::iterator iter = v1.begin(); iter != v1.end(); iter++)
     {
         Account a = *iter;
