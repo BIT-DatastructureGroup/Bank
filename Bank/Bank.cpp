@@ -587,7 +587,7 @@ int main()
    // 测试一些list和manager类的代码，没什么用
     AccountManager accountmanager1;
  //   accountmanager1.importfile();
-    accountmanager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
+   /* accountmanager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
     accountmanager1.Deposite("fuban", 10);
     accountmanager1.CreateAccount("shabi", "yangwu", "18103927335", "fuban", "12345678910", 0);
     accountmanager1.Deposite("shabi", 20);
