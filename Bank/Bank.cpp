@@ -65,7 +65,7 @@ void LoginPage()
           // 操作的选择
           while (1)
           {
-            int choice = 0;
+              string choice = "0";
             cout << "如需存款，请输入数字1" << endl;
             cout << "如需取款，请输入数字2" << endl;
             cout << "如需查询账户信息，请输入数字3" << endl;
@@ -74,11 +74,25 @@ void LoginPage()
             cout << "如需退出系统，请输入数字6" << endl;
             cout << "请选择您要进行的操作：";
             cin >> choice;
-            if (choice == 6)
+            if (choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5" && choice != "6")
+            {
+                int tempcount = 1;
+                while (tempcount)
+                {
+                    cout << "错误的输入！请重新输入1-6的数字！" << endl;
+                    cout << "您的输入是：";
+                    cin >> choice;
+                    if (choice == "1" || choice == "2" || choice == "3" || choice == "4" || choice == "5" || choice == "6" )
+                    {
+                        tempcount = 0;
+                    }
+                }
+            }
+            if (choice == "6")
             {
               break;
             }
-            else if (choice == 1) // 存款
+            else if (choice == "1") // 存款
             {
               Divider();
               while (1)
@@ -91,9 +105,23 @@ void LoginPage()
                   AccountManager1.Deposite(temploaduse, money_in);
                   cout << "存款成功！您现在的账户余额为" << temploaduse.balance << endl;
                   cout << "若要继续存款，请输入数字1；若要退出存款操作，请输入数字2：";
-                  int judge1 = 0;
+                  string judge1 = "0";
                   cin >> judge1;
-                  if (judge1 == 2)
+                  if (judge1 != "1" && judge1 != "0")
+                  {
+                      int tempcount = 1;
+                      while (tempcount)
+                      {
+                          cout << "错误输入！请输入1或者2进行操作！" << endl;
+                          cin >> judge1;
+                          if (judge1 == "1" || judge1 == "2")
+                          {
+                              tempcount = 0;
+                              Divider();
+                          }
+                      }
+                  }
+                  if (judge1 == "2")
                   {
                     Divider();
                     break;
@@ -104,16 +132,30 @@ void LoginPage()
                   cout << "金额错误！请输入合法的金额！" << endl;
                   cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
                   cout << "您的选择是：";
-                  int judge8 = 0;
+                  string judge8 = "0";
                   cin >> judge8;
-                  if (judge8 == 2)
+                  if (judge8 != "1" && judge8 != "0")
+                  {
+                      int tempcount = 1;
+                      while (tempcount)
+                      {
+                          cout << "错误输入！请输入1或者2进行操作！" << endl;
+                          cin >> judge8;
+                          if (judge8 == "1" || judge8 == "2")
+                          {
+                              tempcount = 0;
+                              Divider();
+                          }
+                      }
+                  }
+                  if (judge8 == "2")
                   {
                     break;
                   }
                 }
               }
             }
-            else if (choice == 2) // 取款
+            else if (choice == "2") // 取款
             {
               Divider();
               while (1)
@@ -129,9 +171,23 @@ void LoginPage()
                     temploaduse.balance -= money_out;
                     cout << "取款成功！您现在的账户余额为" << temploaduse.balance << endl;
                     cout << "若要继续取款，请输入数字1；若要退出取款操作，请输入数字2：";
-                    int judge1 = 0;
+                    string judge1 = "0";
                     cin >> judge1;
-                    if (judge1 == 2)
+                    if (judge1 != "1" && judge1 != "0")
+                    {
+                        int tempcount = 1;
+                        while (tempcount)
+                        {
+                            cout << "错误输入！请输入1或者2进行操作！" << endl;
+                            cin >> judge1;
+                            if (judge1 == "1" || judge1 == "2")
+                            {
+                                tempcount = 0;
+                                Divider();
+                            }
+                        }
+                    }
+                    if (judge1 == "2")
                     {
                       break;
                     }
@@ -141,9 +197,23 @@ void LoginPage()
                   {
                     cout << "取款失败！您的余额不足！";
                     cout << "若要继续取款，请输入数字1；若要退出取款操作，请输入数字2：";
-                    int judge2 = 0;
-                    cin >> judge2;
-                    if (judge2 == 2)
+                    string judge2 = "0";
+                    cin >> judge2; 
+                    if (judge2 != "1" && judge2 != "0")
+                    {
+                        int tempcount = 1;
+                        while (tempcount)
+                        {
+                            cout << "错误输入！请输入1或者2进行操作！" << endl;
+                            cin >> judge2;
+                            if (judge2 == "1" || judge2 == "2")
+                            {
+                                tempcount = 0;
+                                Divider();
+                            }
+                        }
+                    }
+                    if (judge2 == "2")
                     {
                       Divider();
                       break;
@@ -165,7 +235,7 @@ void LoginPage()
                 }
               }
             }
-            else if (choice == 3) // 查询账户信息
+            else if (choice == "3") // 查询账户信息
             {
               Divider();
               cout << "身份标识号：" << temploaduse.ID << endl;
@@ -177,18 +247,32 @@ void LoginPage()
               cout << "账户余额：" << temploaduse.balance << endl;
               Divider();
             }
-            else if (choice == 4) // 修改账户信息
+            else if (choice == "4") // 修改账户信息
             {
               Divider();
               // 选择修改内容
-              int temp3 = 0;
+              string temp3 = "0";
               while (1)
               {
                 cout << "若需修改账户手机号，请输入数字1" << endl;
                 cout << "若需修改账户邮箱，请输入数字2" << endl;
                 cout << "您需要修改的内容是：";
                 cin >> temp3;
-                if (temp3 == 1)
+                if (temp3 != "1" && temp3 != "2")
+                {
+                    int tempcount = 1;
+                    while (tempcount)
+                    {
+                        cout << "错误的输入！请输入1或者2！" << endl;
+                        cout << "您的输入是：";
+                        cin >> temp3;
+                        if (temp3 == "1" || temp3 == "2")
+                        {
+                            tempcount = 0;
+                        }
+                    }
+                }
+                if (temp3 == "1")
                 {
                   Divider();
                   cout << "请输入更改后的手机号：";
@@ -198,7 +282,7 @@ void LoginPage()
                   AccountManager1.ModifyAccount(temploaduse, tempchange3, 1);
                   cout << "已完成修改" << endl;
                 }
-                else if (temp3 == 2)
+                else if (temp3 == "2")
                 {
                   Divider();
                   cout << "请输入更改后的邮箱：";
@@ -208,24 +292,54 @@ void LoginPage()
                   AccountManager1.ModifyAccount(temploaduse, tempchange4, 0);
                   cout << "已完成修改" << endl;
                 }
-                int judge3 = 0;
+                string judge3 = "0";
                 cout << "尊敬的" << temploaduse.name << "，您是否需要进行其他修改？如需继续，请输入数字1，如需返回主页面，请输入数字2" << endl;
                 cout << "您的选择是：";
                 cin >> judge3;
-                if (judge3 == 2)
+                if (judge3 != "1" && judge3 != "2")
+                {
+                    int tempcount = 1;
+                    while (tempcount)
+                    {
+                        cout << "错误输入！请输入1或者2进行操作！" << endl;
+                        cin >> judge3;
+                        if (judge3 == "1" || judge3 == "2")
+                        {
+                            tempcount = 0;
+                            Divider();
+                        }
+                    }
+                }
+                if (judge3 == "2")
                 {
                   Divider();
                   break;
                 }
               }
             }
-            else if (choice == 5) // 销户
+            else if (choice == "5") // 销户
             {
               Divider();
               cout << "您确定要进行销户操作吗？如确定，请输入数字1,取消请输入0" << endl;
-              int judge4 = 0;
+              string judge4 = "0";
               cin >> judge4;
-              if (judge4 == 1)
+
+              if (judge4 != "1" && judge4 != "0")
+              {
+                  int tempcount = 1;
+                  while (tempcount)
+                  {
+                      cout << "错误输入！请输入1或者2进行操作！" << endl;
+                      cin >> judge4;
+                      if (judge4 == "1" || judge4 == "2")
+                      {
+                          tempcount = 0;
+                          Divider();
+                      }
+                  }
+              }
+
+              if (judge4 == "1")
               {
                 if (AccountManager1.DeleteUser(temploaduse))
                 {
@@ -239,12 +353,28 @@ void LoginPage()
                   cout << "销户失败！系统异常！" << endl;
                 }
               }
-            }
+            }        //TODO NEXT
             cout << "尊敬的" << temploaduse.name << "，您是否需要进行其他操作？如需继续，请输入数字1，如需安全退出，请输入数字2" << endl;
             cout << "您的选择是：";
-            int judge2 = 0;
+            string judge2 = "0";
             cin >> judge2;
-            if (judge2 == 2)
+
+            if (judge2 != "1" && judge2 != "2")
+            {
+                int tempcount = 1;
+                while (tempcount)
+                {
+                    cout << "错误输入！请输入1或者2进行操作！" << endl;
+                    cin >> judge2;
+                    if (judge2 == "1" || judge2 == "2")
+                    {
+                        tempcount = 0;
+                        Divider();
+                    }
+                }
+            }
+
+            if (judge2 == "2")
             {
               count2 = 0;
               Divider();
@@ -261,9 +391,25 @@ void LoginPage()
           cout << "未查询到此ID账户，登录失败，请重新输入ID账号!" << endl;
           cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
           cout << "您的选择是：";
-          int judge6 = 0;
+          string judge6 = "0";
           cin >> judge6;
-          if (judge6 == 2)
+
+          if (judge6 != "1" && judge6 != "2")
+          {
+              int tempcount = 1;
+              while (tempcount)
+              {
+                  cout << "错误输入！请输入1或者2进行操作！" << endl;
+                  cin >> judge6;
+                  if (judge6 == "1" || judge6 == "2")
+                  {
+                      tempcount = 0;
+                      Divider();
+                  }
+              }
+          }
+
+          if (judge6 == "2")
           {
             Divider();
             break;
@@ -289,9 +435,25 @@ void LoginPage()
             cout << "您的账户非管理员账户，请重新输入管理员账户！" << endl;
             cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
             cout << "您的选择是：";
-            int judge7 = 0;
+            string judge7 = "0";
             cin >> judge7;
-            if (judge7 == 2)
+
+            if (judge7 != "1" && judge7 != "2")
+            {
+                int tempcount = 1;
+                while (tempcount)
+                {
+                    cout << "错误输入！请输入1或者2进行操作！" << endl;
+                    cin >> judge7;
+                    if (judge7 == "1" || judge7 == "2")
+                    {
+                        tempcount = 0;
+                        Divider();
+                    }
+                }
+            }
+
+            if (judge7 == "2")
             {
               Divider();
               break;
@@ -320,9 +482,25 @@ void LoginPage()
               }
               cout << "您是否还需要进行其他操作？若继续操作，请输入数字1，若要退出账号，请输入数字2" << endl;
               cout << "您的选择是：";
-              int judge5 = 0;
+              string judge5 = "0";
               cin >> judge5;
-              if (judge5 == 2)
+
+              if (judge5 != "1" && judge5 != "2")
+              {
+                  int tempcount = 1;
+                  while (tempcount)
+                  {
+                      cout << "错误输入！请输入1或者2进行操作！" << endl;
+                      cin >> judge5;
+                      if (judge5 == "1" || judge5 == "2")
+                      {
+                          tempcount = 0;
+                          Divider();
+                      }
+                  }
+              }
+
+              if (judge5 == "2")
               {
                 cout << "已安全退出账号！" << endl;
                 Divider();
@@ -334,7 +512,30 @@ void LoginPage()
         }
         else
         {
-          cout << "未查询到此ID账户，登录失败，请重新输入ID账号!" << endl;
+            cout << "未查询到此ID账户，登录失败，请重新输入ID账号!" << endl;
+          cout << "若要再尝试一次，请输入数字1，若要回到主页面，请输入数字2" << endl;
+          cout << "您的选择是：";
+          string judge8 = "0";
+          cin >> judge8;
+          if (judge8 != "1" && judge8 != "2")
+          {
+              int tempcount = 1;
+              while (tempcount)
+              {
+                  cout << "错误输入！请输入1或者2进行操作！" << endl;
+                  cin >> judge8;
+                  if (judge8 == "1" || judge8 == "2")
+                  {
+                      tempcount = 0;
+                      Divider();
+                  }
+              }
+          }
+          if (judge8 == "2")
+          {
+              Divider();
+              break;
+          }
         }
       }
     }
@@ -410,23 +611,23 @@ int main()
   while (true)
   {
     WelcomeTitle();
-    int choice1 = 0;
+    string choice1 = "";
     cin >> choice1;
-    if (choice1 != 1 && choice1 != 2 && choice1 != 3)
+    if (choice1 != "1" && choice1 != "2" && choice1 != "3")
     {
       cout << "输入错误！请在数字1-3内进行选择！" << endl;
       Divider();
     }
-    if (choice1 == 3) // 退出系统
+    if (choice1 == "3") // 退出系统
     {
       break;
     }
-    if (choice1 == 1) // 登录
+    if (choice1 == "1") // 登录
     {
       system("cls");
       LoginPage();
     }
-    if (choice1 == 2) // 申请开户
+    if (choice1 == "2") // 申请开户
     {
       system("cls");
       CreateAccountPage();
