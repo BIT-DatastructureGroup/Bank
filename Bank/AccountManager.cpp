@@ -10,7 +10,6 @@
 template class AccountList<Account>;
 
 // 从文件中导入数据
-
 bool AccountManager::ImportFile()
 {
     if (accountList.loadtxt())
@@ -179,4 +178,8 @@ int AccountManager::getnum()
 {
     
     return accountList.length();
+}
+void AccountManager::findin(std::string ID)//模糊查找
+{
+    accountList.findinfo(ID);
 }

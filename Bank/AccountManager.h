@@ -53,6 +53,6 @@ public:
 
   //获取当前有多少个账目
   int getnum();
-
+  void findin(std::string ID);
 };
 #endif

@@ -411,22 +411,22 @@ void CreateAccountPage()
 int main()
 {
     //测试一些List和Manager类的代码，没什么用
-    //AccountManager AccountManager1;
-    //AccountManager1.ImportFile();
-    //cout << AccountManager1.getnum() << endl;
-    //AccountManager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
-    //AccountManager1.Deposite("fuban", 10);
-    //AccountManager1.CreateAccount("shabi", "yangwu", "18103927335", "1426@qq.com", "12345678910", 0);
-    //AccountManager1.Deposite("shabi", 20);
-    //AccountManager1.CreateAccount("nihao", "lisi", "12312341234", "1426@163.com", "58423110", 0);
-    //AccountManager1.Deposite("nihao", 6);
-    /*AccountManager1.CreateAccount("帅哥", "卓卓", "12312345555", "126516@163.com", "41111155558931545", 1);
-    AccountManager1.Deposite("帅哥", 1000000.99);*/
-    //AccountManager1.Withdraw("帅哥", 900000.81);
-
-    //vector<Account> a = AccountManager1.getAccounts();
+    AccountManager AccountManager1;
+   // AccountManager1.ImportFile();
+   /* cout << AccountManager1.getnum() << endl;
+    AccountManager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
+    AccountManager1.Deposite("fuban", 10);
+    AccountManager1.CreateAccount("shabi", "yangwu", "fuban", "1426@qq.com", "12345678910", 0);
+    AccountManager1.Deposite("shabi", 20);
+    AccountManager1.CreateAccount("nihao", "lisi", "12312341234", "fuban", "58423110", 0);
+    AccountManager1.Deposite("nihao", 6);
+    AccountManager1.CreateAccount("帅哥", "卓卓", "12312345555", "126516@163.com", "fuba", 1);
+    AccountManager1.Deposite("帅哥", 1000000.99);
+    AccountManager1.Withdraw("帅哥", 900000.81);
+    AccountManager1.findin("fuban");
+    vector<Account> a = AccountManager1.getAccounts();*/
     //a.deposite("fuban", 5);
-    /*for (std::vector<Account>::iterator iter = a.begin(); iter != a.end(); iter++)
+   /* for (std::vector<Account>::iterator iter = a.begin(); iter != a.end(); iter++)
     {
         Account a = *iter;
         std::cout << a;

@@ -26,13 +26,14 @@ public:
   } // 使用类型参数T作为元素类型
   // 添加一个新的账户放到链表最后面
   void add(T account); // 使用类型参数T作为元素类型
-  void showlist();
+  bool showlist();
   bool find(std::string id, T &out); // 使用类型参数K作为关键字类型，T作为元素类型
   bool modifyEmail(std::string ID, std::string s);
   bool modifyPhone(std::string ID, std::string s);
   bool deposite(std::string ID, float money);
   bool withdraw(std::string ID, float money);
   bool deleteaccount(std::string ID);
+  bool findinfo(std::string information);//根据任意信息查找
   std::vector<Account> listtovector();
   bool savetxt();
   bool loadtxt();
@@ -54,12 +55,11 @@ void AccountList<T>::add(T account) // 使用类型参数T
   temp->next = NULL;
 }
 template <typename T>           // 模板声明
-void AccountList<T>::showlist() // 使用类型参数T
+bool AccountList<T>::showlist() // 使用类型参数T
 {
   if (head->next == NULL)
   {
-    std::cout << "空链表\n";
-    return;
+    return false;
   }
   AccountNode<T> *p = head->next; // 使用类型参数T
   while (p != NULL)
@@ -67,6 +67,7 @@ void AccountList<T>::showlist() // 使用类型参数T
     std::cout << p->data << std::endl;
     p = p->next;
   }
+  return true;
 }
 template <typename T>                             // 模板声明
 bool AccountList<T>::find(std::string id, T &out) // 使用类型参数T
@@ -83,7 +84,22 @@ bool AccountList<T>::find(std::string id, T &out) // 使用类型参数T
   }
   return false;
 }
-
+template <typename T>
+bool AccountList<T>::findinfo(std::string information) // 使用类型参数T
+{
+    AccountNode<T>* p = head; // 使用类型参数T
+    AccountList res;
+    while (p != NULL)
+    {
+        if (p->data.ID == information || p->data.phone == information || p->data.email == information || p->data.phone == information || p->data.IDCard == information)
+        {
+           res.add(p->data);
+        }
+        p = p->next;
+    }
+    if (res.showlist() == false) { std::cout << "未找到相关结果" << std::endl; }
+    return false;
+}
 // 通过ID查找到对应的账户，修改邮箱为s
 template <typename T>
 bool AccountList<T>::modifyEmail(std::string ID, std::string s)
