@@ -183,56 +183,28 @@ void LoginPage()
               int temp3 = 0;
               while (1)
               {
-                cout << "若需修改身份标识号，请输入数字1" << endl;
-                cout << "若需修改账户姓名，请输入数字2" << endl;
-                cout << "若需修改账户手机号，请输入数字3" << endl;
-                cout << "若需修改账户邮箱，请输入数字4" << endl;
-                cout << "若需修改账户身份证号，请输入数字5" << endl;
+                cout << "若需修改账户手机号，请输入数字1" << endl;
+                cout << "若需修改账户邮箱，请输入数字2" << endl;
                 cout << "您需要修改的内容是：";
                 cin >> temp3;
                 if (temp3 == 1)
                 {
                   Divider();
-                  cout << "请输入更改后的身份标识号：";
-                  string tempchange1;
-                  cin >> tempchange1;
-                  temploaduse.ID = tempchange1;
+                  cout << "请输入更改后的手机号：";
+                  string tempchange3;
+                  cin >> tempchange3;
+                  // temploaduse.phone = tempchange3;
+                  AccountManager1.ModifyAccount(temploaduse, tempchange3, 1);
                   cout << "已完成修改" << endl;
                 }
                 else if (temp3 == 2)
                 {
                   Divider();
-                  cout << "请输入更改后的姓名：";
-                  string tempchange2;
-                  cin >> tempchange2;
-                  temploaduse.name = tempchange2;
-                  cout << "已完成修改" << endl;
-                }
-                else if (temp3 == 3)
-                {
-                  Divider();
-                  cout << "请输入更改后的手机号：";
-                  string tempchange3;
-                  cin >> tempchange3;
-                  temploaduse.phone = tempchange3;
-                  cout << "已完成修改" << endl;
-                }
-                else if (temp3 == 4)
-                {
-                  Divider();
                   cout << "请输入更改后的邮箱：";
                   string tempchange4;
                   cin >> tempchange4;
-                  temploaduse.email = tempchange4;
-                  cout << "已完成修改" << endl;
-                }
-                else if (temp3 == 5)
-                {
-                  Divider();
-                  cout << "请输入更改后的身份标识号：";
-                  string tempchange5;
-                  cin >> tempchange5;
-                  temploaduse.IDCard = tempchange5;
+                  // temploaduse.email = tempchange4;
+                  AccountManager1.ModifyAccount(temploaduse, tempchange4, 0);
                   cout << "已完成修改" << endl;
                 }
                 int judge3 = 0;
@@ -411,22 +383,22 @@ void CreateAccountPage()
 int main()
 {
     //测试一些List和Manager类的代码，没什么用
-    AccountManager AccountManager1;
-   // AccountManager1.ImportFile();
-   /* cout << AccountManager1.getnum() << endl;
-    AccountManager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
-    AccountManager1.Deposite("fuban", 10);
-    AccountManager1.CreateAccount("shabi", "yangwu", "fuban", "1426@qq.com", "12345678910", 0);
-    AccountManager1.Deposite("shabi", 20);
-    AccountManager1.CreateAccount("nihao", "lisi", "12312341234", "fuban", "58423110", 0);
-    AccountManager1.Deposite("nihao", 6);
-    AccountManager1.CreateAccount("帅哥", "卓卓", "12312345555", "126516@163.com", "fuba", 1);
-    AccountManager1.Deposite("帅哥", 1000000.99);
-    AccountManager1.Withdraw("帅哥", 900000.81);
-    AccountManager1.findin("fuban");
-    vector<Account> a = AccountManager1.getAccounts();*/
+    //AccountManager AccountManager1;
+    //AccountManager1.ImportFile();
+    //cout << AccountManager1.getnum() << endl;
+    //AccountManager1.CreateAccount("fuban", "zhangsan", "18103927335", "1426@qq.com", "12345678910", 0);
+    //AccountManager1.Deposite("fuban", 10);
+    //AccountManager1.CreateAccount("shabi", "yangwu", "18103927335", "1426@qq.com", "12345678910", 0);
+    //AccountManager1.Deposite("shabi", 20);
+    //AccountManager1.CreateAccount("nihao", "lisi", "12312341234", "1426@163.com", "58423110", 0);
+    //AccountManager1.Deposite("nihao", 6);
+    /*AccountManager1.CreateAccount("帅哥", "卓卓", "12312345555", "126516@163.com", "41111155558931545", 1);
+    AccountManager1.Deposite("帅哥", 1000000.99);*/
+    //AccountManager1.Withdraw("帅哥", 900000.81);
+
+    //vector<Account> a = AccountManager1.getAccounts();
     //a.deposite("fuban", 5);
-   /* for (std::vector<Account>::iterator iter = a.begin(); iter != a.end(); iter++)
+    /*for (std::vector<Account>::iterator iter = a.begin(); iter != a.end(); iter++)
     {
         Account a = *iter;
         std::cout << a;
