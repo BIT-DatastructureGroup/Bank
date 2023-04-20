@@ -91,7 +91,7 @@ bool AccountList<T>::findinfo(std::string information) // 使用类型参数T
     AccountList res;
     while (p != NULL)
     {
-        if (p->data.ID == information || p->data.phone == information || p->data.email == information || p->data.phone == information || p->data.IDCard == information)
+        if (p->data.ID == information || p->data.phone == information || p->data.email == information || p->data.name == information || p->data.IDCard == information||p->data.Card==information)
         {
            res.add(p->data);
         }
