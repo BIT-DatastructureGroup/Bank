@@ -25,7 +25,7 @@ void Divider()
 
 void LoginPage()
 {
-  int choice2;
+  string choice2 = "";
   int count2 = 1;
   
   Divider();
@@ -34,12 +34,13 @@ void LoginPage()
     cout << "若选择客户登录，请输入数字1；若选择管理员登录，请输入数字2" << endl;
     cout << "请选择登录方式：";
     cin >> choice2;
-    if (choice2 != 1 && choice2 != 2)
+    if (choice2 != "1" && choice2 != "2")
     {
       cout << "输入错误，请输入1或者2进行选择！" << endl;
       Divider();
+      continue;
     }
-    if (choice2 == 1) // 客户登录
+    if (choice2 == "1") // 客户登录
     {
       count2 = 0;
       Divider();
@@ -271,7 +272,7 @@ void LoginPage()
         }
       }
     }
-    if (choice2 == 2) // TODO：管理员登录
+    if (choice2 == "2") // TODO：管理员登录
     {
       count2 = 0;
       Divider();
