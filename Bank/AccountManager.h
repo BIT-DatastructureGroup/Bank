@@ -34,7 +34,7 @@ public:
   // modifyType = 0 修改邮箱 1 是修改电话
   // True: 修改成功 False: 修改失败
   bool ModifyAccount(std::string ID,std::string s, int modifyType);
-  bool ModifyAccount(Account newaccount, std::string s, int modifyType);
+  bool ModifyAccount(Account &newaccount, std::string s, int modifyType);
 
   // 存款函数
   bool Deposite(std::string ID, float money);
@@ -42,7 +42,7 @@ public:
 
   // 取款函数
   bool Withdraw(std::string ID, float money);
-  bool Withdraw(Account newaccount, float money);
+  bool Withdraw(Account &newaccount, float money);
 
   // 销户
   bool DeleteUser(std::string ID);

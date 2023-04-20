@@ -89,18 +89,20 @@ bool AccountManager::ModifyAccount(std::string ID, std::string s, int modifyType
   }
 }
 
-bool AccountManager::ModifyAccount(Account newaccount, std::string s, int modifyType)
+bool AccountManager::ModifyAccount(Account &newaccount, std::string s, int modifyType)
 {
   std::string ID = newaccount.ID;
   // 修改邮箱
   if (modifyType == 0)
   {
     accountList.modifyEmail(ID, s);
+    newaccount.email = s;
     return true;
   }
   // 修改电话
   else if (modifyType == 1)
   {
+      newaccount.phone = s;
     accountList.modifyPhone(ID, s);
     return true;
   }
@@ -137,11 +139,12 @@ bool AccountManager::Withdraw(std::string ID, float money)
   return false;
 }
 
-bool AccountManager::Withdraw(Account newaccount, float money)
+bool AccountManager::Withdraw(Account &newaccount, float money)
 {
   std::string ID = newaccount.ID;
   if (accountList.withdraw(ID, money))
   {
+      newaccount.balance += money;
     return true;
   }
   return false;
