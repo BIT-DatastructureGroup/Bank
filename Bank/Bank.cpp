@@ -15,12 +15,18 @@ void WelcomeTitle()
   cout << "欢迎来到数字银行主页！请选择您要进行的操作：" << endl;
   cout << "若已有账户，请输入数字1进行登录" << endl
        << "若没有账户，请输入数字2申请开户" << endl
+       << "若要访问管理员功能，请输入a进入" << endl
        << "若要退出系统，请输入数字3" << endl;
 }
 
 void Divider()
 {
   cout << "*--------------------------------------------------------------------------*" << endl;
+}
+
+void ClearScreen() {
+  system("cls");  // for windows
+  system("clear"); // for mac
 }
 
 void LoginPage()
@@ -31,9 +37,10 @@ void LoginPage()
   Divider();
   while (count2)
   {
-    cout << "若选择客户登录，请输入数字1；若选择管理员登录，请输入数字2" << endl;
-    cout << "请选择登录方式：";
-    cin >> choice2;
+    // cout << "若选择客户登录，请输入数字1；若选择管理员登录，请输入数字2" << endl;
+    // cout << "请选择登录方式：";
+    //cin >> choice2;
+    choice2 = "1";
     if (choice2 != "1" && choice2 != "2")
     {
       cout << "输入错误，请输入1或者2进行选择！" << endl;
@@ -582,6 +589,72 @@ void CreateAccountPage()
   }
 }
 
+void AdminPage(){
+  // 先进行密码验证
+  const std::string adminPassword = "114514";
+  cout << "请输入管理员密码: ";
+  std::string inputPassword;
+  cin >> inputPassword;
+  if(inputPassword != adminPassword) {
+    ClearScreen();
+    cout << "[管理员密码错误!] " << endl;
+    return;
+  }
+  // 验证通过，展现功能列表
+  while(true){
+    std::string adminChoice;
+    cout  << "验证通过！请选择你的操作:" << endl
+          << "[*] 浏览功能" << endl
+          << "  [1] 查询银行总账户数目" << endl
+          << "  [2] 查询银行总存款数目" << endl
+          << "  [3] 展示全部账户列表" << endl
+          << "[*] 查询功能" << endl
+          << "  [4] ID精准查找" << endl
+          << "  [5] 模糊查找" << endl
+          << "[e] 退出管理员菜单" << endl;
+    cin >> adminChoice;
+    if(adminChoice == "1") {
+      // 查询银行总账户数目
+      auto accountNum = AccountManager1.getnum();
+      cout << "[!] 银行现在开户的总账户数目为: " << accountNum << endl;
+    }else if(adminChoice == "2") {
+      // 查询银行总存款数目
+      auto accounts = AccountManager1.getAccounts();
+      float totNumber = 0;
+      for(Account &a : accounts) {
+        totNumber += a.balance;
+      }
+      cout << "[!] 银行现在总存款数为: " << totNumber << endl;
+    }else if(adminChoice == "3") {
+      // 展示全部账户列表
+      auto accounts = AccountManager1.getAccounts();
+      cout << "[!] 账户列表数目:" << endl;
+      // 只打印ID，姓名，余额
+      string header[] = {"ID", "name", "money"};
+      int width[] = {14, 14, 14}; // 每列宽度
+      // 打印表头
+      cout << "==========================================" << endl;
+      for (int i = 0; i < 3; i++) {
+        cout << setw(width[i]) << header[i];
+      }
+      cout << endl;
+      for(Account &a : accounts) {
+        cout  << setw(width[0]) << a.ID
+              << setw(width[1]) << a.name
+              << setw(width[2]) << a.balance << endl;
+      }
+      cout << "==========================================" << endl;
+    }else if(adminChoice == "4") {
+      // ID精准查找
+      
+    }else if(adminChoice == "5") {
+      // 模糊查找
+    }else if(adminChoice == "e") {
+      break;
+    }
+  }
+}
+
 int main()
 {
    // 测试一些list和manager类的代码，没什么用
@@ -612,9 +685,9 @@ int main()
     WelcomeTitle();
     string choice1 = "";
     cin >> choice1;
-    if (choice1 != "1" && choice1 != "2" && choice1 != "3")
+    if (choice1 != "1" && choice1 != "2" && choice1 != "3" && choice1 != "a")
     {
-      cout << "输入错误！请在数字1-3内进行选择！" << endl;
+      cout << "输入错误！请在数字1-3内进行选择，或者进入管理员功能！" << endl;
       Divider();
     }
     if (choice1 == "3") // 退出系统
@@ -623,13 +696,18 @@ int main()
     }
     if (choice1 == "1") // 登录
     {
-      system("cls");
+      ClearScreen();
       LoginPage();
     }
     if (choice1 == "2") // 申请开户
     {
-      system("cls");
+      ClearScreen();
       CreateAccountPage();
+    }
+    if(choice1 == "a") // 管理员功能
+    {
+      ClearScreen();
+      AdminPage();
     }
   }
 }
