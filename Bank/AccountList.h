@@ -1,3 +1,4 @@
+#include<iostream>
 #ifndef ACCOUNTLIST_H
 #define ACCOUNTLIST_H
 #include "AccountNode.h"
@@ -37,8 +38,7 @@ public:
   std::vector<Account> listtovector();
   bool savetxt();
   bool loadtxt();
-
-  // TODO: 返回链表中的元素个数
+  bool transfermoney(std::string IDin,std::string IDout,float money);
   int length();
 };
 
@@ -145,6 +145,10 @@ bool AccountList<T>::deposite(std::string ID, float money)
     if (p->data.ID == ID)
     {
       p->data.balance += money;
+      if (p->data.balance > 1000000)
+      {
+          p->data.VIP = 1;
+      }
       return true;
     }
     p = p->next;
@@ -162,6 +166,10 @@ bool AccountList<T>::withdraw(std::string ID, float money)
   {
     if (p->data.ID == ID)
     {
+        if (p->data.balance < money)
+        {
+            return false;
+        }
       p->data.balance -= money;
       return true;
     }
@@ -310,5 +318,21 @@ bool AccountList<T>::loadtxt() // 使用类型参数T
     }
     std::cout << "调试结束..." << std::endl;
     fin.close();
+}
+template <typename T>
+bool AccountList<T>::transfermoney(std::string IDin, std::string IDout, float money)
+{
+    Account in;
+    Account out;
+    if (find(IDin, in) && find(IDout, out))
+    {
+        if (out.VIP == 0 ? money * 1.001 : money < money)
+        {
+            return false;
+        }
+        out.balance -= out.VIP == 0 ? money * 1.001 : money;//1.001包括手续费，暂定0.001倍
+        in.balance += money;
+    }
+    return false;
 }
 #endif
