@@ -11,8 +11,7 @@ private:
  AccountList<Account> accountList;
 public:
   AccountManager() {
-    // TODO: 读取文件进入列表里
-      
+    ImportFile();
   }
 
   // 导入文件

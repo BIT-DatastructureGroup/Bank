@@ -48,6 +48,7 @@ bool AccountManager::CreateAccount(std::string ID, std::string name, std::string
   std::string Card = std::to_string(randomNumber);
   Account newAccount(ID, name, phone, email, IDCard, Card, 0, manager,0);
   accountList.add(newAccount);
+  ExportFile();
   return true;
 }
 
@@ -74,12 +75,14 @@ bool AccountManager::ModifyAccount(std::string ID, std::string s, int modifyType
   if (modifyType == 0)
   {
     accountList.modifyEmail(ID, s);
+    ExportFile();
     return true;
   }
   // 修改电话
   else if (modifyType == 1)
   {
     accountList.modifyPhone(ID, s);
+    ExportFile();
     return true;
   }
   else
@@ -96,13 +99,15 @@ bool AccountManager::ModifyAccount(Account &newaccount, std::string s, int modif
   {
     accountList.modifyEmail(ID, s);
     newaccount.email = s;
+    ExportFile();
     return true;
   }
   // 修改电话
   else if (modifyType == 1)
   {
-      newaccount.phone = s;
+    newaccount.phone = s;
     accountList.modifyPhone(ID, s);
+    ExportFile();
     return true;
   }
   else
@@ -115,6 +120,7 @@ bool AccountManager::Deposite(std::string ID, float money)
 {
 
   accountList.deposite(ID, money);
+  ExportFile();
   return true;
 }
 
@@ -125,6 +131,7 @@ bool AccountManager::Deposite(Account &newaccount, float money)
   newaccount.balance += money;
   // 在链表中进行同样的操作
   accountList.deposite(ID, money);
+  ExportFile();
   return true;
 }
 
@@ -133,6 +140,7 @@ bool AccountManager::Withdraw(std::string ID, float money)
 
   if (accountList.withdraw(ID, money))
   {
+    ExportFile();
     return true;
   }
   return false;
@@ -144,6 +152,7 @@ bool AccountManager::Withdraw(Account &newaccount, float money)
   if (accountList.withdraw(ID, money))
   {
       newaccount.balance += money;
+      ExportFile();
     return true;
   }
   return false;
@@ -153,6 +162,7 @@ bool AccountManager::DeleteUser(std::string ID)
 {
   if (accountList.deleteaccount(ID))
   {
+    ExportFile();
     return true;
   }
   return false;
@@ -163,6 +173,7 @@ bool AccountManager::DeleteUser(Account newaccount)
   std::string ID = newaccount.ID;
   if (accountList.deleteaccount(ID))
   {
+    ExportFile();
     return true;
   }
   return false;
