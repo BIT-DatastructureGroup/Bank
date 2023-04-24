@@ -313,7 +313,7 @@ bool AccountList<T>::loadtxt() // 使用类型参数T
         balance = std::stof(strbalance);
         manager = std::stoi(strmanager);
         
-        Account a(ID, name, phone, email, IDCard, Ca,balance, manager);
+        Account a(ID, name, phone, email, IDCard, Ca,balance, manager,0);
         add(a);
     }
     std::cout << "调试结束..." << std::endl;
@@ -326,7 +326,7 @@ bool AccountList<T>::transfermoney(std::string IDin, std::string IDout, float mo
     Account out;
     if (find(IDin, in) && find(IDout, out))
     {
-        if (out.VIP == 0 ? money * 1.001 : money < money)
+        if (out.VIP == 0 ? out.balance * 1.001 : out.balance < money)
         {
             return false;
         }
