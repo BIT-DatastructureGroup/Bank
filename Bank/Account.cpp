@@ -9,6 +9,6 @@ std::ostream& operator<<(std::ostream& out, const Account& a) {
     out << "身份证: " << a.IDCard << "\n";
     out << "银行卡: " << a.Card << "\n";
     out << "余额: " << a.balance << "\n";
-    out << "VIP用户：" << (a.VIP == 0 ? "否\n" : "是\n");
+    out << "VIP用户：" << (a.vip == 0 ? "否\n" : "是\n");
     return out;
 }

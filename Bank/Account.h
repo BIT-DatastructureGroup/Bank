@@ -8,9 +8,9 @@ class Account {
 private:
 	friend std::ostream& operator<<(std::ostream& out, const Account& a);
 public:
-	Account() { ID = "0"; name = "0"; phone = "0"; email = "0"; IDCard = "0"; Card = "0"; balance = 0; manager = 0; VIP = 0; }
+	Account() { ID = "0"; name = "0"; phone = "0"; email = "0"; IDCard = "0"; Card = "0"; balance = 0; manager = 0; vip = 0; }
 	Account(std::string id, std::string na, std::string ph, std::string em, std::string IDC, std::string Ca, float ba,bool ma,bool vi) {
-		ID = id; name = na; phone = ph; email = em; IDCard = IDC; Card = Ca; balance = ba; manager = ma; VIP = vi;
+		ID = id; name = na; phone = ph; email = em; IDCard = IDC; Card = Ca; balance = ba; manager = ma; vip = vi;
 	}
 	void print(){std::cout << "账户ID: " << ID << "\n";
 	std::cout << "姓名: " << name << "\n";
@@ -37,12 +37,14 @@ public:
 
   // 银行卡号
   std::string Card;
-  bool VIP;
   // 账户余额
   float balance;
 
   // 是否为管理员
   // 0:否 1:是
   bool manager;
+
+  // 是否为VIP
+  bool vip;
 };
 #endif

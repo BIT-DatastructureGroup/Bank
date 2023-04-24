@@ -25,7 +25,7 @@ public:
     std::string email, std::string IDCard,bool manager);
 
   // 模糊查找，匹配所有关键字，管理员的功能
-   AccountList<Account> QueryBlur(std::string blur);
+   std::vector<Account> QueryBlur(std::string blur);
 
   // 用户登录的时候，通过他的ID找到他的全部信息
   bool QueryById(std::string ID, Account& out);

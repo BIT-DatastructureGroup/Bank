@@ -34,7 +34,7 @@ public:
   bool deposite(std::string ID, float money);
   bool withdraw(std::string ID, float money);
   bool deleteaccount(std::string ID);
-  bool findinfo(std::string information);//根据任意信息查找
+  std::vector<Account> findinfo(std::string information);//根据任意信息查找
   std::vector<Account> listtovector();
   bool savetxt();
   bool loadtxt();
@@ -85,20 +85,19 @@ bool AccountList<T>::find(std::string id, T &out) // 使用类型参数T
   return false;
 }
 template <typename T>
-bool AccountList<T>::findinfo(std::string information) // 使用类型参数T
+std::vector<Account> AccountList<T>::findinfo(std::string information) // 使用类型参数T
 {
     AccountNode<T>* p = head; // 使用类型参数T
-    AccountList res;
+    std::vector<Account> res;
     while (p != NULL)
     {
         if (p->data.ID == information || p->data.phone == information || p->data.email == information || p->data.name == information || p->data.IDCard == information||p->data.Card==information)
         {
-           res.add(p->data);
+           res.push_back(p->data);
         }
         p = p->next;
     }
-    if (res.showlist() == false) { std::cout << "未找到相关结果" << std::endl; }
-    return false;
+    return res;
 }
 // 通过ID查找到对应的账户，修改邮箱为s
 template <typename T>
@@ -147,7 +146,7 @@ bool AccountList<T>::deposite(std::string ID, float money)
       p->data.balance += money;
       if (p->data.balance > 1000000)
       {
-          p->data.VIP = 1;
+          p->data.vip = 1;
       }
       return true;
     }
@@ -260,7 +259,8 @@ bool AccountList<T>::savetxt() // 使用类型参数T
         std::string Card = p->data.Card;
         float balance = p->data.balance;
         bool manager = p->data.manager;
-        fout << ID << " " << name << " " << phone << " " << email << " " << IDCard << " " << Card << " " << balance << " " << manager << std::endl;
+        bool vip = p->data.vip;
+        fout << ID << " " << name << " " << phone << " " << email << " " << IDCard << " " << Card << " " << balance << " " << manager << " " << vip << std::endl;
         p = p->next;
     }
     fout.close();
@@ -278,7 +278,7 @@ bool AccountList<T>::loadtxt() // 使用类型参数T
         return false;
     }
     std::string temp;
-    std::cout << "调试中..." << std::endl;
+    //std::cout << "调试中..." << std::endl;
     while (std::getline(fin, temp))
     {
         std::string ID;
@@ -289,8 +289,10 @@ bool AccountList<T>::loadtxt() // 使用类型参数T
         std::string Ca;
         std::string strbalance;
         std::string strmanager;
+        std::string strvip;
         float balance;
         bool manager;
+        bool vip;
         std::vector<std::string> v;
         int start, end;
         start = end = 0;
@@ -299,9 +301,9 @@ bool AccountList<T>::loadtxt() // 使用类型参数T
             end = temp.find(dl, start);
             v.push_back(temp.substr(start, end - start));
         }
-        for (int i = 0; i < v.size(); i++) {
+       /* for (int i = 0; i < v.size(); i++) {
             std::cout << v[i] << std::endl;
-        }
+        }*/
         ID = v[0];
         name = v[1];
         phone = v[2];
@@ -310,13 +312,15 @@ bool AccountList<T>::loadtxt() // 使用类型参数T
         Ca = v[5];
         strbalance = v[6];
         strmanager = v[7];
+        strvip = v[8];
         balance = std::stof(strbalance);
         manager = std::stoi(strmanager);
+        vip = std::stoi(strvip);
         
-        Account a(ID, name, phone, email, IDCard, Ca,balance, manager,0);
+        Account a(ID, name, phone, email, IDCard, Ca,balance, manager,vip);
         add(a);
     }
-    std::cout << "调试结束..." << std::endl;
+    //std::cout << "调试结束..." << std::endl;
     fin.close();
 }
 template <typename T>
@@ -326,11 +330,11 @@ bool AccountList<T>::transfermoney(std::string IDin, std::string IDout, float mo
     Account out;
     if (find(IDin, in) && find(IDout, out))
     {
-        if (out.VIP == 0 ? out.balance * 1.001 : out.balance < money)
+        if (out.vip == 0 ? out.balance * 1.001 : out.balance < money)
         {
             return false;
         }
-        out.balance -= out.VIP == 0 ? money * 1.001 : money;//1.001包括手续费，暂定0.001倍
+        out.balance -= out.vip == 0 ? money * 1.001 : money;//1.001包括手续费，暂定0.001倍
         in.balance += money;
     }
     return false;

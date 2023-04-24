@@ -33,7 +33,7 @@ bool AccountManager::CreateAccount(std::string ID, std::string name, std::string
     Account temp;
     if (accountList.find(ID, temp))
     {
-        std::cout << "ID以存在，请重新创建！" << std::endl;
+        std::cout << "ID已存在，请重新创建！" << std::endl;
         return false;
     }
   // 生成6位随机数
@@ -52,9 +52,11 @@ bool AccountManager::CreateAccount(std::string ID, std::string name, std::string
   return true;
 }
 
-AccountList<Account> AccountManager::QueryBlur(std::string blur)
+std::vector<Account> AccountManager::QueryBlur(std::string blur)
 {
-  return AccountList<Account>();
+    std::vector<Account> a;
+    a = accountList.findinfo(blur);
+    return a;
 }
 
 bool AccountManager::QueryById(std::string ID, Account &out)
