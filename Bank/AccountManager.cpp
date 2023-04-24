@@ -46,7 +46,7 @@ bool AccountManager::CreateAccount(std::string ID, std::string name, std::string
   }
   int randomNumber = rand() % 900000 + 100000;
   std::string Card = std::to_string(randomNumber);
-  Account newAccount(ID, name, phone, email, IDCard, Card, 0, manager);
+  Account newAccount(ID, name, phone, email, IDCard, Card, 0, manager,0);
   accountList.add(newAccount);
   return true;
 }
