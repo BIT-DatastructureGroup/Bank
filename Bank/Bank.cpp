@@ -646,9 +646,29 @@ void AdminPage(){
       cout << "==========================================" << endl;
     }else if(adminChoice == "4") {
       // ID精准查找
-      
+      std::string queryId;
+      cout << endl << "输入你要查询的ID: ";
+      cin >> queryId;
+      Account res;
+      if(AccountManager1.QueryById(queryId, res)) {
+        res.print();
+      } else {
+        ClearScreen();
+        cout << "[!] 没有找到这个账户，请检查ID是否正确!" << endl;
+      }
     }else if(adminChoice == "5") {
       // 模糊查找
+      std::string blurInfo;
+      cout << endl << "输入你要查询的模糊信息(ID, 手机, 邮箱, 姓名, 身份证, 卡号均可): ";
+      cin >> blurInfo;
+      Account res;
+      // TODO: 等待实现好模糊查找再接入
+      if(false) {
+        res.print();
+      } else {
+        ClearScreen();
+        cout << "[!] 没有找到这个账户，请检查ID是否正确!" << endl;
+      }
     }else if(adminChoice == "e") {
       break;
     }
