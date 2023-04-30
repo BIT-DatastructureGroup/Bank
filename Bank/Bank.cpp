@@ -662,13 +662,25 @@ void AdminPage(){
       std::string blurInfo;
       cout << endl << "输入你要查询的模糊信息(ID, 手机, 邮箱, 姓名, 身份证, 卡号均可): ";
       cin >> blurInfo;
-      Account res;
-      // TODO: 等待实现好模糊查找再接入
-      if(false) {
-        res.print();
-      } else {
+      auto res = AccountManager1.QueryBlur(blurInfo);
+      if(res.size() == 0) {
         ClearScreen();
         cout << "[!] 没有找到这个账户，请检查ID是否正确!" << endl;
+      }else{
+        string header[] = {"ID", "name", "money"};
+        int width[] = {14, 14, 14}; // 每列宽度
+        // 打印表头
+        cout << "==========================================" << endl;
+        for (int i = 0; i < 3; i++) {
+          cout << setw(width[i]) << header[i];
+        }
+        cout << endl;
+        for(Account &a : res) {
+          cout  << setw(width[0]) << a.ID
+                << setw(width[1]) << a.name
+                << setw(width[2]) << a.balance << endl;
+        }
+        cout << "==========================================" << endl;
       }
     }else if(adminChoice == "e") {
       break;
