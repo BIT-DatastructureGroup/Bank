@@ -177,6 +177,10 @@ void LoginPage()
                   if (temploaduse.balance > money_out)
                   {
                     temploaduse.balance -= money_out;
+                    if(!AccountManager1.Withdraw(temploaduse.ID, money_out)){
+                      cout << "Fetal error: fuckyou" << endl;
+                    }
+                    AccountManager1.QueryById(temploaduse.ID, temploaduse);
                     cout << "取款成功！您现在的账户余额为" << temploaduse.balance << endl;
                     cout << "若要继续取款，请输入数字1；若要退出取款操作，请输入数字2：";
                     string judge1 = "0";
