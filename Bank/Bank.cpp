@@ -554,7 +554,7 @@ void CreateAccountPage()
 {
   while (1)
   {
-    cout << "请按顺序输入您的ID（身份标识号）、姓名、电话号码、邮箱、身份证号码、是否为管理员（是输入1,不是则输入0）：(若想退出开户操作，请输入“退出”)" << endl;
+    cout << "请按顺序输入您的ID（身份标识号）、姓名、电话号码、邮箱、身份证号码：(若想退出开户操作，请输入“退出”)" << endl;
     string ID, name, phone, mail, IDCard;
     int Manager = 3;
     cin >> ID;
@@ -562,7 +562,8 @@ void CreateAccountPage()
     {
       break;
     }
-    cin >> name >> phone >> mail >> IDCard >> Manager;
+    Manager = 0;
+    cin >> name >> phone >> mail >> IDCard;
     // 搜索一下看看ID是否重复
     Account tempac;
     while (1)
