@@ -185,7 +185,7 @@ void LoginPage()
                     cout << "若要继续取款，请输入数字1；若要退出取款操作，请输入数字2：";
                     string judge1 = "0";
                     cin >> judge1;
-                    if (judge1 != "1" && judge1 != "0")
+                    if (judge1 != "1" && judge1 != "2")
                     {
                         int tempcount = 1;
                         while (tempcount)
