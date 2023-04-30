@@ -12,39 +12,39 @@ public:
 	Account(std::string id, std::string na, std::string ph, std::string em, std::string IDC, std::string Ca, float ba,bool ma,bool vi) {
 		ID = id; name = na; phone = ph; email = em; IDCard = IDC; Card = Ca; balance = ba; manager = ma; vip = vi;
 	}
-	void print(){std::cout << "ÕË»§ID: " << ID << "\n";
-	std::cout << "ÐÕÃû: " << name << "\n";
-	std::cout << "µç»°: " << phone << "\n";
-	std::cout << "ÓÊÏä: " << email << "\n";
-	std::cout << "Éí·ÝÖ¤: " << IDCard << "\n";
-	std::cout << "ÒøÐÐ¿¨: " << Card << "\n";
-	std::cout << "Óà¶î: " << balance << "\n";
+	void print(){std::cout << "è´¦æˆ·ID: " << ID << "\n";
+	std::cout << "å§“å: " << name << "\n";
+	std::cout << "ç”µè¯: " << phone << "\n";
+	std::cout << "é‚®ç®±: " << email << "\n";
+	std::cout << "èº«ä»½è¯: " << IDCard << "\n";
+	std::cout << "é“¶è¡Œå¡: " << Card << "\n";
+	std::cout << "ä½™é¢: " << balance << "\n";
 	}
-  // Éí·Ý±êÊ¶ºÅ
+  // èº«ä»½æ ‡è¯†å·
   std::string ID;
 
-  // ÐÕÃû
+  // å§“å
   std::string name;
 
-  // ÊÖ»úºÅ
+  // æ‰‹æœºå·
   std::string phone;
 
-  // ÓÊÏä
+  // é‚®ç®±
   std::string email;
 
-  // Éí·ÝÖ¤ºÅ
+  // èº«ä»½è¯å·
   std::string IDCard;
 
-  // ÒøÐÐ¿¨ºÅ
+  // é“¶è¡Œå¡å·
   std::string Card;
-  // ÕË»§Óà¶î
+  // è´¦æˆ·ä½™é¢
   float balance;
 
-  // ÊÇ·ñÎª¹ÜÀíÔ±
-  // 0:·ñ 1:ÊÇ
+  // æ˜¯å¦ä¸ºç®¡ç†å‘˜
+  // 0:å¦ 1:æ˜¯
   bool manager;
 
-  // ÊÇ·ñÎªVIP
+  // æ˜¯å¦ä¸ºVIP
   bool vip;
 };
 #endif

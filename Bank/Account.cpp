@@ -2,13 +2,13 @@
 #include "Account.h"
 std::ostream& operator<<(std::ostream& out, const Account& a) {
 
-    out << "ÕË»§ID: " << a.ID << "\n";
-    out << "ÐÕÃû: " << a.name << "\n";
-    out << "µç»°: " << a.phone << "\n";
-    out << "ÓÊÏä: " << a.email << "\n";
-    out << "Éí·ÝÖ¤: " << a.IDCard << "\n";
-    out << "ÒøÐÐ¿¨: " << a.Card << "\n";
-    out << "Óà¶î: " << a.balance << "\n";
-    out << "VIPÓÃ»§£º" << (a.vip == 0 ? "·ñ\n" : "ÊÇ\n");
+    out << "è´¦æˆ·ID: " << a.ID << "\n";
+    out << "å§“å: " << a.name << "\n";
+    out << "ç”µè¯: " << a.phone << "\n";
+    out << "é‚®ç®±: " << a.email << "\n";
+    out << "èº«ä»½è¯: " << a.IDCard << "\n";
+    out << "é“¶è¡Œå¡: " << a.Card << "\n";
+    out << "ä½™é¢: " << a.balance << "\n";
+    out << "VIPç”¨æˆ·ï¼š" << (a.vip == 0 ? "å¦\n" : "æ˜¯\n");
     return out;
 }

@@ -5,7 +5,7 @@
 #include "AccountList.h"
 #include<string>
 #include<vector>
-// ÕË»§¹ÜÀíÀà
+// è´¦æˆ·ç®¡ç†ç±»
 class AccountManager {
 private:
  AccountList<Account> accountList;
@@ -14,43 +14,43 @@ public:
     ImportFile();
   }
 
-  // µ¼ÈëÎÄ¼ş
+  // å¯¼å…¥æ–‡ä»¶
   bool ImportFile();
 
-  // µ¼³öÎÄ¼ş
+  // å¯¼å‡ºæ–‡ä»¶
   bool ExportFile();
 
 
   bool CreateAccount(std::string ID, std::string name, std::string phone,
     std::string email, std::string IDCard,bool manager);
 
-  // Ä£ºı²éÕÒ£¬Æ¥ÅäËùÓĞ¹Ø¼ü×Ö£¬¹ÜÀíÔ±µÄ¹¦ÄÜ
+  // æ¨¡ç³ŠæŸ¥æ‰¾ï¼ŒåŒ¹é…æ‰€æœ‰å…³é”®å­—ï¼Œç®¡ç†å‘˜çš„åŠŸèƒ½
    std::vector<Account> QueryBlur(std::string blur);
 
-  // ÓÃ»§µÇÂ¼µÄÊ±ºò£¬Í¨¹ıËûµÄIDÕÒµ½ËûµÄÈ«²¿ĞÅÏ¢
+  // ç”¨æˆ·ç™»å½•çš„æ—¶å€™ï¼Œé€šè¿‡ä»–çš„IDæ‰¾åˆ°ä»–çš„å…¨éƒ¨ä¿¡æ¯
   bool QueryById(std::string ID, Account& out);
 
-  // modifyType = 0 ĞŞ¸ÄÓÊÏä 1 ÊÇĞŞ¸Äµç»°
-  // True: ĞŞ¸Ä³É¹¦ False: ĞŞ¸ÄÊ§°Ü
+  // modifyType = 0 ä¿®æ”¹é‚®ç®± 1 æ˜¯ä¿®æ”¹ç”µè¯
+  // True: ä¿®æ”¹æˆåŠŸ False: ä¿®æ”¹å¤±è´¥
   bool ModifyAccount(std::string ID,std::string s, int modifyType);
   bool ModifyAccount(Account &newaccount, std::string s, int modifyType);
 
-  // ´æ¿îº¯Êı
+  // å­˜æ¬¾å‡½æ•°
   bool Deposite(std::string ID, float money);
   bool Deposite(Account &newaccount, float money);
 
-  // È¡¿îº¯Êı
+  // å–æ¬¾å‡½æ•°
   bool Withdraw(std::string ID, float money);
   bool Withdraw(Account &newaccount, float money);
 
-  // Ïú»§
+  // é”€æˆ·
   bool DeleteUser(std::string ID);
   bool DeleteUser(Account newaccount);
 
-  // »ñÈ¡vector°üº¬Ä¿Ç°ËùÓĞAccount
+  // è·å–vectoråŒ…å«ç›®å‰æ‰€æœ‰Account
   std::vector<Account> getAccounts();
 
-  //»ñÈ¡µ±Ç°ÓĞ¶àÉÙ¸öÕËÄ¿
+  //è·å–å½“å‰æœ‰å¤šå°‘ä¸ªè´¦ç›®
   int getnum();
   void findin(std::string ID);
 };

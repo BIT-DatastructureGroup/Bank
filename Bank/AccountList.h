@@ -6,11 +6,11 @@
 #include <iostream>
 #include <vector>
 #include<fstream>
-template <typename T> // ÀàĞÍ²ÎÊı±í
-class AccountList     // ÀàÄ£°åÃû
+template <typename T> // ç±»å‹å‚æ•°è¡¨
+class AccountList     // ç±»æ¨¡æ¿å
 {
 private:
-  AccountNode<T> *head; // Ê¹ÓÃÀàĞÍ²ÎÊıT×÷ÎªÔªËØÀàĞÍ
+  AccountNode<T> *head; // ä½¿ç”¨ç±»å‹å‚æ•°Tä½œä¸ºå…ƒç´ ç±»å‹
 public:
   AccountList()
   {
@@ -18,23 +18,23 @@ public:
     T a;
     head->data = a;
     head->next = NULL;
-  }; // Ê¹ÓÃÀàĞÍ²ÎÊıT×÷ÎªÔªËØÀàĞÍ
+  }; // ä½¿ç”¨ç±»å‹å‚æ•°Tä½œä¸ºå…ƒç´ ç±»å‹
   AccountList(T a)
   {
     head = new AccountNode<T>;
     head->data = a;
     head->next = NULL;
-  } // Ê¹ÓÃÀàĞÍ²ÎÊıT×÷ÎªÔªËØÀàĞÍ
-  // Ìí¼ÓÒ»¸öĞÂµÄÕË»§·Åµ½Á´±í×îºóÃæ
-  void add(T account); // Ê¹ÓÃÀàĞÍ²ÎÊıT×÷ÎªÔªËØÀàĞÍ
+  } // ä½¿ç”¨ç±»å‹å‚æ•°Tä½œä¸ºå…ƒç´ ç±»å‹
+  // æ·»åŠ ä¸€ä¸ªæ–°çš„è´¦æˆ·æ”¾åˆ°é“¾è¡¨æœ€åé¢
+  void add(T account); // ä½¿ç”¨ç±»å‹å‚æ•°Tä½œä¸ºå…ƒç´ ç±»å‹
   bool showlist();
-  bool find(std::string id, T &out); // Ê¹ÓÃÀàĞÍ²ÎÊıK×÷Îª¹Ø¼ü×ÖÀàĞÍ£¬T×÷ÎªÔªËØÀàĞÍ
+  bool find(std::string id, T &out); // ä½¿ç”¨ç±»å‹å‚æ•°Kä½œä¸ºå…³é”®å­—ç±»å‹ï¼ŒTä½œä¸ºå…ƒç´ ç±»å‹
   bool modifyEmail(std::string ID, std::string s);
   bool modifyPhone(std::string ID, std::string s);
   bool deposite(std::string ID, float money);
   bool withdraw(std::string ID, float money);
   bool deleteaccount(std::string ID);
-  std::vector<Account> findinfo(std::string information);//¸ù¾İÈÎÒâĞÅÏ¢²éÕÒ
+  std::vector<Account> findinfo(std::string information);//æ ¹æ®ä»»æ„ä¿¡æ¯æŸ¥æ‰¾
   std::vector<Account> listtovector();
   bool savetxt();
   bool loadtxt();
@@ -42,26 +42,26 @@ public:
   int length();
 };
 
-// Ôö¼ÓĞÂµÄÔªËØÔÚ±íµÄÄ©Î²
-template <typename T>               // Ä£°åÉùÃ÷
-void AccountList<T>::add(T account) // Ê¹ÓÃÀàĞÍ²ÎÊıT
+// å¢åŠ æ–°çš„å…ƒç´ åœ¨è¡¨çš„æœ«å°¾
+template <typename T>               // æ¨¡æ¿å£°æ˜
+void AccountList<T>::add(T account) // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
-  AccountNode<T> *p = head; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+  AccountNode<T> *p = head; // ä½¿ç”¨ç±»å‹å‚æ•°T
   for (; p->next != NULL; p = p->next)
     ;
-  AccountNode<T> *temp = new AccountNode<T>; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+  AccountNode<T> *temp = new AccountNode<T>; // ä½¿ç”¨ç±»å‹å‚æ•°T
   temp->data = account;
   p->next = temp;
   temp->next = NULL;
 }
-template <typename T>           // Ä£°åÉùÃ÷
-bool AccountList<T>::showlist() // Ê¹ÓÃÀàĞÍ²ÎÊıT
+template <typename T>           // æ¨¡æ¿å£°æ˜
+bool AccountList<T>::showlist() // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
   if (head->next == NULL)
   {
     return false;
   }
-  AccountNode<T> *p = head->next; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+  AccountNode<T> *p = head->next; // ä½¿ç”¨ç±»å‹å‚æ•°T
   while (p != NULL)
   {
     std::cout << p->data << std::endl;
@@ -69,10 +69,10 @@ bool AccountList<T>::showlist() // Ê¹ÓÃÀàĞÍ²ÎÊıT
   }
   return true;
 }
-template <typename T>                             // Ä£°åÉùÃ÷
-bool AccountList<T>::find(std::string id, T &out) // Ê¹ÓÃÀàĞÍ²ÎÊıT
+template <typename T>                             // æ¨¡æ¿å£°æ˜
+bool AccountList<T>::find(std::string id, T &out) // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
-  AccountNode<T> *p = head; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+  AccountNode<T> *p = head; // ä½¿ç”¨ç±»å‹å‚æ•°T
   while (p != NULL)
   {
     if (p->data.ID == id)
@@ -85,9 +85,9 @@ bool AccountList<T>::find(std::string id, T &out) // Ê¹ÓÃÀàĞÍ²ÎÊıT
   return false;
 }
 template <typename T>
-std::vector<Account> AccountList<T>::findinfo(std::string information) // Ê¹ÓÃÀàĞÍ²ÎÊıT
+std::vector<Account> AccountList<T>::findinfo(std::string information) // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
-    AccountNode<T>* p = head; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+    AccountNode<T>* p = head; // ä½¿ç”¨ç±»å‹å‚æ•°T
     std::vector<Account> res;
     while (p != NULL)
     {
@@ -99,7 +99,7 @@ std::vector<Account> AccountList<T>::findinfo(std::string information) // Ê¹ÓÃÀà
     }
     return res;
 }
-// Í¨¹ıID²éÕÒµ½¶ÔÓ¦µÄÕË»§£¬ĞŞ¸ÄÓÊÏäÎªs
+// é€šè¿‡IDæŸ¥æ‰¾åˆ°å¯¹åº”çš„è´¦æˆ·ï¼Œä¿®æ”¹é‚®ç®±ä¸ºs
 template <typename T>
 bool AccountList<T>::modifyEmail(std::string ID, std::string s)
 {
@@ -116,7 +116,7 @@ bool AccountList<T>::modifyEmail(std::string ID, std::string s)
   return false;
 };
 
-// Í¨¹ıID²éÕÒµ½¶ÔÓ¦µÄÕË»§£¬ĞŞ¸Äµç»°Îªs
+// é€šè¿‡IDæŸ¥æ‰¾åˆ°å¯¹åº”çš„è´¦æˆ·ï¼Œä¿®æ”¹ç”µè¯ä¸ºs
 template <typename T>
 bool AccountList<T>::modifyPhone(std::string ID, std::string s)
 {
@@ -134,11 +134,11 @@ bool AccountList<T>::modifyPhone(std::string ID, std::string s)
   return false;
 };
 
-// Í¨¹ıID²éÕÒµ½¶ÔÓ¦µÄÕË»§£¬Ôö¼Ó½ğ¶îmoney
+// é€šè¿‡IDæŸ¥æ‰¾åˆ°å¯¹åº”çš„è´¦æˆ·ï¼Œå¢åŠ é‡‘é¢money
 template <typename T>
 bool AccountList<T>::deposite(std::string ID, float money)
 {
-  AccountNode<T> *p = head; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+  AccountNode<T> *p = head; // ä½¿ç”¨ç±»å‹å‚æ•°T
   while (p != NULL)
   {
     if (p->data.ID == ID)
@@ -155,8 +155,8 @@ bool AccountList<T>::deposite(std::string ID, float money)
   return false;
 };
 
-// Í¨¹ıID²éÕÒµ½¶ÔÓ¦µÄÕË»§£¬¼õÉÙ½ğ¶îmoney
-// ³É¹¦È¡Ç®·µ»Øtrue, Ê§°Ü·µ»Øfalse
+// é€šè¿‡IDæŸ¥æ‰¾åˆ°å¯¹åº”çš„è´¦æˆ·ï¼Œå‡å°‘é‡‘é¢money
+// æˆåŠŸå–é’±è¿”å›true, å¤±è´¥è¿”å›false
 template <typename T>
 bool AccountList<T>::withdraw(std::string ID, float money)
 {
@@ -177,30 +177,30 @@ bool AccountList<T>::withdraw(std::string ID, float money)
   return false;
 };
 
-// Í¨¹ıID²éÕÒµ½¶ÔÓ¦µÄÕË»§£¬É¾³ıÓÃ»§
-// ³É¹¦É¾³ı·µ»Øtrue, Ê§°Ü·µ»Øfalse
+// é€šè¿‡IDæŸ¥æ‰¾åˆ°å¯¹åº”çš„è´¦æˆ·ï¼Œåˆ é™¤ç”¨æˆ·
+// æˆåŠŸåˆ é™¤è¿”å›true, å¤±è´¥è¿”å›false
 template <typename T>
 bool AccountList<T>::deleteaccount(std::string ID)
 {
-  AccountNode<T> *p = head->next; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+  AccountNode<T> *p = head->next; // ä½¿ç”¨ç±»å‹å‚æ•°T
   AccountNode<T> *last = head;
 
-  // Ñ­»·²éÕÒ²¢É¾³ı½Úµã
+  // å¾ªç¯æŸ¥æ‰¾å¹¶åˆ é™¤èŠ‚ç‚¹
   while (p != NULL)
   {
     if (p->data.ID == ID)
     {
-      last->next = p->next; // ¸üĞÂÇ°Çı½Úµã
-      delete p;             // É¾³ıµ±Ç°½Úµã
-      return true;          // ·µ»ØÉ¾³ı³É¹¦
+      last->next = p->next; // æ›´æ–°å‰é©±èŠ‚ç‚¹
+      delete p;             // åˆ é™¤å½“å‰èŠ‚ç‚¹
+      return true;          // è¿”å›åˆ é™¤æˆåŠŸ
     }
-    last = p;    // Ç°Çı½ÚµãºóÒÆ
-    p = p->next; // µ±Ç°½ÚµãºóÒÆ
+    last = p;    // å‰é©±èŠ‚ç‚¹åç§»
+    p = p->next; // å½“å‰èŠ‚ç‚¹åç§»
   }
-  return false; // Ã»ÓĞÕÒµ½ÒªÉ¾³ıµÄ½Úµã£¬·µ»ØÉ¾³ıÊ§°Ü
+  return false; // æ²¡æœ‰æ‰¾åˆ°è¦åˆ é™¤çš„èŠ‚ç‚¹ï¼Œè¿”å›åˆ é™¤å¤±è´¥
 }
 
-// ·µ»ØÁ´±íÖĞÔªËØ¸öÊı
+// è¿”å›é“¾è¡¨ä¸­å…ƒç´ ä¸ªæ•°
 template <typename T>
 int AccountList<T>::length()
 {
@@ -214,11 +214,11 @@ int AccountList<T>::length()
   return num-1;
 }
 
-//½«Á´±í×ªÎªvector·µ»Ø
-template <typename T>                             // Ä£°åÉùÃ÷
-std::vector<Account> AccountList<T>::listtovector() // Ê¹ÓÃÀàĞÍ²ÎÊıT
+//å°†é“¾è¡¨è½¬ä¸ºvectorè¿”å›
+template <typename T>                             // æ¨¡æ¿å£°æ˜
+std::vector<Account> AccountList<T>::listtovector() // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
-    AccountNode<T>* p = head->next; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+    AccountNode<T>* p = head->next; // ä½¿ç”¨ç±»å‹å‚æ•°T
     //int num = length();
     std::vector<Account> v1;
     while (p != NULL)
@@ -227,7 +227,7 @@ std::vector<Account> AccountList<T>::listtovector() // Ê¹ÓÃÀàĞÍ²ÎÊıT
         p = p->next;
     }
 
-    /*std::cout <<"vector´óĞ¡Îª£º"<< num << std::endl;
+    /*std::cout <<"vectorå¤§å°ä¸ºï¼š"<< num << std::endl;
     for (std::vector<Account>::iterator iter = v1.begin(); iter != v1.end(); iter++)
     {
         Account a = *iter;
@@ -236,18 +236,18 @@ std::vector<Account> AccountList<T>::listtovector() // Ê¹ÓÃÀàĞÍ²ÎÊıT
     return v1;
 }
 
-//½«Á´±í±£´æÎªtxt
-template <typename T>                             // Ä£°åÉùÃ÷
-bool AccountList<T>::savetxt() // Ê¹ÓÃÀàĞÍ²ÎÊıT
+//å°†é“¾è¡¨ä¿å­˜ä¸ºtxt
+template <typename T>                             // æ¨¡æ¿å£°æ˜
+bool AccountList<T>::savetxt() // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
     std::ofstream fout;
     fout.open("accountlist.txt");
     if (!(fout.is_open()))
     {
-        std::cout << "ÎÄ¼ş´ò¿ªÊ§°Ü£¡" << std::endl;
+        std::cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥ï¼" << std::endl;
         return false;
     }
-    AccountNode<T>* p = head->next; // Ê¹ÓÃÀàĞÍ²ÎÊıT
+    AccountNode<T>* p = head->next; // ä½¿ç”¨ç±»å‹å‚æ•°T
     int num = length();
     while (p != NULL)
     {
@@ -266,19 +266,19 @@ bool AccountList<T>::savetxt() // Ê¹ÓÃÀàĞÍ²ÎÊıT
     fout.close();
 }
 
-//°ÑtxtÖĞµÄÎÄ¼ş¶ÁÈ¡³öÀ´
-template <typename T>                             // Ä£°åÉùÃ÷
-bool AccountList<T>::loadtxt() // Ê¹ÓÃÀàĞÍ²ÎÊıT
+//æŠŠtxtä¸­çš„æ–‡ä»¶è¯»å–å‡ºæ¥
+template <typename T>                             // æ¨¡æ¿å£°æ˜
+bool AccountList<T>::loadtxt() // ä½¿ç”¨ç±»å‹å‚æ•°T
 {
     std::ifstream fin;
     fin.open("accountlist.txt");
     if (!(fin.is_open()))
     {
-        std::cout << "¶ÁÈ¡Êı¾İ´ò¿ªÎÄ¼şÊ§°Ü!" << std::endl;
+        std::cout << "è¯»å–æ•°æ®æ‰“å¼€æ–‡ä»¶å¤±è´¥!" << std::endl;
         return false;
     }
     std::string temp;
-    //std::cout << "µ÷ÊÔÖĞ..." << std::endl;
+    //std::cout << "è°ƒè¯•ä¸­..." << std::endl;
     while (std::getline(fin, temp))
     {
         std::string ID;
@@ -320,7 +320,7 @@ bool AccountList<T>::loadtxt() // Ê¹ÓÃÀàĞÍ²ÎÊıT
         Account a(ID, name, phone, email, IDCard, Ca,balance, manager,vip);
         add(a);
     }
-    //std::cout << "µ÷ÊÔ½áÊø..." << std::endl;
+    //std::cout << "è°ƒè¯•ç»“æŸ..." << std::endl;
     fin.close();
 }
 template <typename T>
@@ -334,7 +334,7 @@ bool AccountList<T>::transfermoney(std::string IDin, std::string IDout, float mo
         {
             return false;
         }
-        out.balance -= out.vip == 0 ? money * 1.001 : money;//1.001°üÀ¨ÊÖĞø·Ñ£¬Ôİ¶¨0.001±¶
+        out.balance -= out.vip == 0 ? money * 1.001 : money;//1.001åŒ…æ‹¬æ‰‹ç»­è´¹ï¼Œæš‚å®š0.001å€
         in.balance += money;
     }
     return false;

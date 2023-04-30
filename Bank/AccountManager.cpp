@@ -6,10 +6,10 @@
 #include <iostream>
 #include<vector>
 
-// ÊµÀı»¯Ä£°åÀà
+// å®ä¾‹åŒ–æ¨¡æ¿ç±»
 template class AccountList<Account>;
 
-// ´ÓÎÄ¼şÖĞµ¼ÈëÊı¾İ
+// ä»æ–‡ä»¶ä¸­å¯¼å…¥æ•°æ®
 bool AccountManager::ImportFile()
 {
     if (accountList.loadtxt())
@@ -18,7 +18,7 @@ bool AccountManager::ImportFile()
     }
   return false;
 }
-// ±£´æÊı¾İ
+// ä¿å­˜æ•°æ®
 bool AccountManager::ExportFile()
 {
     if (accountList.savetxt())
@@ -33,14 +33,14 @@ bool AccountManager::CreateAccount(std::string ID, std::string name, std::string
     Account temp;
     if (accountList.find(ID, temp))
     {
-        std::cout << "IDÒÑ´æÔÚ£¬ÇëÖØĞÂ´´½¨£¡" << std::endl;
+        std::cout << "IDå·²å­˜åœ¨ï¼Œè¯·é‡æ–°åˆ›å»ºï¼" << std::endl;
         return false;
     }
-  // Éú³É6Î»Ëæ»úÊı
+  // ç”Ÿæˆ6ä½éšæœºæ•°
   static bool inited = false;
   if (!inited)
   {
-    // Ö»³õÊ¼»¯Ò»´Î
+    // åªåˆå§‹åŒ–ä¸€æ¬¡
     srand(time(NULL));
     inited = true;
   }
@@ -73,14 +73,14 @@ bool AccountManager::QueryById(std::string ID, Account &out)
 bool AccountManager::ModifyAccount(std::string ID, std::string s, int modifyType)
 {
 
-  // ĞŞ¸ÄÓÊÏä
+  // ä¿®æ”¹é‚®ç®±
   if (modifyType == 0)
   {
     accountList.modifyEmail(ID, s);
     ExportFile();
     return true;
   }
-  // ĞŞ¸Äµç»°
+  // ä¿®æ”¹ç”µè¯
   else if (modifyType == 1)
   {
     accountList.modifyPhone(ID, s);
@@ -96,7 +96,7 @@ bool AccountManager::ModifyAccount(std::string ID, std::string s, int modifyType
 bool AccountManager::ModifyAccount(Account &newaccount, std::string s, int modifyType)
 {
   std::string ID = newaccount.ID;
-  // ĞŞ¸ÄÓÊÏä
+  // ä¿®æ”¹é‚®ç®±
   if (modifyType == 0)
   {
     accountList.modifyEmail(ID, s);
@@ -104,7 +104,7 @@ bool AccountManager::ModifyAccount(Account &newaccount, std::string s, int modif
     ExportFile();
     return true;
   }
-  // ĞŞ¸Äµç»°
+  // ä¿®æ”¹ç”µè¯
   else if (modifyType == 1)
   {
     newaccount.phone = s;
@@ -129,9 +129,9 @@ bool AccountManager::Deposite(std::string ID, float money)
 bool AccountManager::Deposite(Account &newaccount, float money)
 {
   std::string ID = newaccount.ID;
-  // ½«´«½øÀ´µÄÕË»§ÒıÓÃµÄÓà¶î¼ÓÉÏmoney
+  // å°†ä¼ è¿›æ¥çš„è´¦æˆ·å¼•ç”¨çš„ä½™é¢åŠ ä¸Šmoney
   newaccount.balance += money;
-  // ÔÚÁ´±íÖĞ½øĞĞÍ¬ÑùµÄ²Ù×÷
+  // åœ¨é“¾è¡¨ä¸­è¿›è¡ŒåŒæ ·çš„æ“ä½œ
   accountList.deposite(ID, money);
   ExportFile();
   return true;
@@ -192,7 +192,7 @@ int AccountManager::getnum()
     
     return accountList.length();
 }
-void AccountManager::findin(std::string ID)//Ä£ºı²éÕÒ
+void AccountManager::findin(std::string ID)//æ¨¡ç³ŠæŸ¥æ‰¾
 {
     accountList.findinfo(ID);
 }

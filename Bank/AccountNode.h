@@ -1,12 +1,12 @@
 #ifndef ACCOUNTNODE_H
 #define ACCOUNTNODE_H
 #include "Account.h"
-template <typename T> //Ä£°åÉùÃ÷
-class AccountNode //ÀàÃû
+template <typename T> //æ¨¡æ¿å£°æ˜
+class AccountNode //ç±»å
 {
 public:
-	T data; //Ê¹ÓÃÀàĞÍ²ÎÊıT×÷ÎªÊı¾İÀàĞÍ
-	AccountNode* next; //Ö¸ÕëÓò
-	AccountNode() { next = NULL; } //¹¹Ôìº¯Êı
+	T data; //ä½¿ç”¨ç±»å‹å‚æ•°Tä½œä¸ºæ•°æ®ç±»å‹
+	AccountNode* next; //æŒ‡é’ˆåŸŸ
+	AccountNode() { next = NULL; } //æ„é€ å‡½æ•°
 };
 #endif
